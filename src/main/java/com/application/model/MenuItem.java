@@ -1,7 +1,17 @@
 package com.application.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+//@Entity
+
+
+
 public class MenuItem {
-    int menuItemId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long menuItemId;
     String itemName;
     String type;
     String description;
@@ -10,7 +20,7 @@ public class MenuItem {
     public MenuItem() {
     }
 
-    public int getMenuItemId() {
+    public long getMenuItemId() {
         return menuItemId;
     }
 

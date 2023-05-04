@@ -1,24 +1,45 @@
 package com.application.model;
 
-public class Table {
-    int tableId;
-    int seat;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    public Table(int seat, boolean isMergeable, boolean isAvailable) {
+@Entity
+
+public class Table {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long tableId;
+    int tableNumber;
+    int seat;
+    boolean isMergeable;
+    boolean isAvailable;
+
+    public Table() {
+    }
+
+    public Table(int tableNumber, int seat, boolean isMergeable, boolean isAvailable) {
+        this.tableNumber = tableNumber;
         this.seat = seat;
         this.isMergeable = isMergeable;
         this.isAvailable = isAvailable;
     }
 
-    public Table() {
-    }
-
-    public int getTableId() {
+    public long getTableId() {
         return tableId;
     }
 
-    public void setTableId(int tableId) {
+    public void setTableId(long tableId) {
         this.tableId = tableId;
+    }
+
+    public int getTableNumber() {
+        return tableNumber;
+    }
+
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
     }
 
     public int getSeat() {
@@ -44,8 +65,4 @@ public class Table {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
-
-    boolean isMergeable;
-    boolean isAvailable;
-
 }

@@ -1,13 +1,17 @@
 package com.application.model;
 
-import com.application.repositories.AccountRepositoryImpl;
-import com.application.repositories.CustomerRepositoryImpl;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+@Entity
 public class Customer {
-    int customerId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long customerId;
     PaymentMethod paymentMethod;
     String firstName;
     String lastName;
@@ -17,7 +21,6 @@ public class Customer {
     boolean isGuest;
 
     public Customer(PaymentMethod paymentMethod, String firstName, String lastName, String phoneNumber, String email, String address, boolean isGuest) {
-        this.customerId = nextId();
         this.paymentMethod = paymentMethod;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,23 +47,23 @@ public class Customer {
     public Customer() {
     }
 
-    public static int nextId(){
-        int nextId = 0;
-        ArrayList<Integer> accountID = new ArrayList<Integer>();
-
-        for (int i = 0; i < CustomerRepositoryImpl.customers.size(); i++) {
-            accountID.add(AccountRepositoryImpl.accounts.get(i).getAccountId());
-
-            Collections.sort(accountID, Collections.reverseOrder());
-
-        }
-        if (accountID.size() == 0){
-            return 1;
-        }else {
-            nextId = accountID.get(0) + 1;
-            return nextId;
-        }
-
-    }
+//    public static int nextId(){
+//        int nextId = 0;
+//        ArrayList<Integer> accountID = new ArrayList<Integer>();
+//
+//        for (int i = 0; i < CustomerRepositoryImpl.customers.size(); i++) {
+//            accountID.add((int) AccountRepositoryImpl.accounts.get(i).getAccountId());
+//
+//            Collections.sort(accountID, Collections.reverseOrder());
+//
+//        }
+//        if (accountID.size() == 0){
+//            return 1;
+//        }else {
+//            nextId = accountID.get(0) + 1;
+//            return nextId;
+//        }
+//
+//    }
 
 }

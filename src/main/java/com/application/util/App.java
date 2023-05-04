@@ -1,8 +1,5 @@
 package com.application.util;
 
-import com.application.model.Account;
-import com.application.repositories.AccountRepositoryImpl;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -24,7 +21,7 @@ public class App {
 
     }
     public static void write(){
-        File file = new File("src/main/resources/data.sql");
+        File file = new File("src/main/resources/data2.txt");
         FileWriter fr = null;
         try {
             fr = new FileWriter(file, true);

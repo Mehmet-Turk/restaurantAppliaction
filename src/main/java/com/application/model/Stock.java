@@ -1,5 +1,6 @@
 package com.application.model;
 
+
 public class Stock {
     public Stock(String name, int recentAmount, int minAmount) {
         this.name = name;

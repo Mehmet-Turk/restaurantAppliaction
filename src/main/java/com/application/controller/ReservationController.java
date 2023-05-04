@@ -3,6 +3,7 @@ package com.application.controller;
 import com.application.model.Reservation;
 import com.application.service.ReservationService;
 import com.application.service.ReservationServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,17 +15,16 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class ReservationController {
-
-    ReservationService reservationService = new ReservationServiceImpl();
+    @Autowired
+    ReservationService reservationService ;
 
     // Endpoint
     // http://localhost:8080/api/reservation
     // POST
     @PostMapping(value = "reservation", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Reservation> createReservation(@RequestBody Reservation reservation){
-        Optional<Reservation> created = reservationService.save(reservation);
 
-        return created.isPresent()? ResponseEntity.ok().body(created.get()):ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().body(reservationService.save(reservation));
 
     }
 
@@ -43,10 +43,9 @@ public class ReservationController {
     // http://localhost:8080/api/reservation/filter/true
     // GET
     @PostMapping(value = "reservation/filter", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<List<Reservation>> getAllReservationsOnDate(@RequestBody Reservation reservation){
-    //    return reservationService.filterReservationForVegan( reservation);
+    public ResponseEntity<Iterable<Reservation>> getAllReservationsOnDate(@RequestBody Reservation reservation){
         return ResponseEntity.ok().body(
-                reservationService.filterReservationForVegan( reservation));
+                reservationService.filterReservationForBabyChair( reservation));
     }
 
     // Endpoint

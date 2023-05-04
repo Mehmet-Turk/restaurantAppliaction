@@ -2,14 +2,15 @@ package com.application.service;
 
 import com.application.model.Reservation;
 import com.application.repositories.ReservationRepository;
-import com.application.repositories.ReservationRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ReservationServiceImpl implements ReservationService {
-
-    ReservationRepository reservationRepository = new ReservationRepositoryImpl();
+    @Autowired
+    ReservationRepository reservationRepository ;
 
     @Override
     public List<Reservation> findAll() {
@@ -22,19 +23,19 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Optional<Reservation> save(Reservation reservation) {
+    public Reservation save(Reservation reservation) {
 
         return reservationRepository.save(reservation);
     }
 
     @Override
     public void remove(long id) {
-        reservationRepository.remove(id);
+        reservationRepository.deleteById(id);
 
     }
 
     @Override
-    public List<Reservation> filterReservationForVegan(Reservation reservation) {
+    public Iterable<Reservation> filterReservationForBabyChair(Reservation reservation) {
 
         List<Reservation> reservations = (List<Reservation>) reservationRepository.findAll();
 
@@ -42,12 +43,11 @@ public class ReservationServiceImpl implements ReservationService {
 //        String s2 = null;
 //        boolean check = s2 == null? true: s1.equals(s2);
 
-        List<Reservation> filtered = reservations.stream()
-                .filter( x -> x.isVegan() == reservation.isVegan())
-                .filter( x -> x.getGuests() == reservation.getGuests())
+        return reservations.stream()
+                .filter( x -> x.isAddBabyChair() == reservation.isAddBabyChair())
+                .filter( x -> x.getCustomer() == reservation.getCustomer())
 //                .filter( x -> x.isVegan())
                 .toList();
 
-        return filtered;
     }
 }

@@ -1,81 +1,57 @@
 package com.application.model;
 
-import com.application.repositories.AccountRepositoryImpl;
-import com.application.repositories.ReservationRepositoryImpl;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.time.LocalTime;
+@Entity
 
 public class Reservation {
+//    reservationId integer PRIMARY KEY,
+//    customerId integer,
+//    tableId integer,
+//    startTime DATETIME,
+//    startDate DATE,
+//    addBabyChair boolean
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
 
-    long id;
-    int tableNumber;
-    String telephoneNumber;
-    String email;
-    int guests;
-    boolean vegan;
+    long reservationId;
+    Customer customer;
+    Table table;
     LocalDate date;
+    LocalTime time;
+    boolean addBabyChair;
+
 
     public Reservation() {
     }
 
-    public Reservation(int tableNumber, String telephoneNumber, String email, int guests, boolean vegan, LocalDate date) {
-        this.id = Sequence.getNextSequence();
-        this.tableNumber = tableNumber;
-        this.telephoneNumber = telephoneNumber;
-        this.email = email;
-        this.guests = guests;
-        this.vegan = vegan;
-        this.date = date;
+    public long getReservationId() {
+        return reservationId;
     }
 
-    public long getId() {
-        return id;
+    public void setReservationId(long reservationId) {
+        this.reservationId = reservationId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public int getTableNumber() {
-        return tableNumber;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public void setTableNumber(int tableNumber) {
-        this.tableNumber = tableNumber;
+    public Table getTable() {
+        return table;
     }
 
-   public String getTelephoneNumber() {
-        return telephoneNumber;
-    }
-
-    public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getGuests() {
-        return guests;
-    }
-
-    public void setGuests(int guests) {
-        this.guests = guests;
-    }
-
-    public boolean isVegan() {
-        return vegan;
-    }
-
-    public void setVegan(boolean vegan) {
-        this.vegan = vegan;
+    public void setTable(Table table) {
+        this.table = table;
     }
 
     public LocalDate getDate() {
@@ -84,5 +60,29 @@ public class Reservation {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+
+    public boolean isAddBabyChair() {
+        return addBabyChair;
+    }
+
+    public void setAddBabyChair(boolean addBabyChair) {
+        this.addBabyChair = addBabyChair;
+    }
+
+    public Reservation(Customer customer, Table table, LocalDate date, LocalTime time, boolean addBabyChair) {
+        this.customer = customer;
+        this.table = table;
+        this.date = date;
+        this.time = time;
+        this.addBabyChair = addBabyChair;
     }
 }

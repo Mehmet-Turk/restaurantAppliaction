@@ -1,13 +1,18 @@
 package com.application.model;
 
-import com.application.repositories.AccountRepositoryImpl;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+//@Entity
+
 
 public class Account {
-    int accountId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long accountId;
     String firstName;
     String lastName;
     String phoneNumber;
@@ -32,7 +37,6 @@ public class Account {
     }
 
     public Account(String firstName, String lastName, String phoneNumber, String email, String password, String role) {
-        this.accountId = nextId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -41,7 +45,7 @@ public class Account {
         this.role = role;
     }
 
-    public int getAccountId() {
+    public long getAccountId() {
         return accountId;
     }
 
@@ -89,24 +93,7 @@ public class Account {
         this.role = role;
     }
 
-    public static int nextId(){
-        int nextId = 0;
-        ArrayList<Integer> accountID = new ArrayList<Integer>();
 
-        for (int i = 0; i < AccountRepositoryImpl.accounts.size(); i++) {
-            accountID.add(AccountRepositoryImpl.accounts.get(i).getAccountId());
-
-            Collections.sort(accountID, Collections.reverseOrder());
-
-        }
-        if (accountID.size() == 0){
-            return 1;
-        }else {
-            nextId = accountID.get(0) + 1;
-            return nextId;
-        }
-
-    }
 
 }
 
