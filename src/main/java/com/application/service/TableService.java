@@ -1,13 +1,12 @@
 package com.application.service;
 
-import com.application.model.Customer;
-import com.application.model.Table;
+import com.application.model.RestaurantTables;
 
 import java.util.Optional;
 
 public interface TableService {
-    Iterable<Table> findAll();
-    Optional<Table> findById(long id);
-    Table save(Table table);
+    Iterable<RestaurantTables> findAll();
+    Optional<RestaurantTables> findById(long id);
+    RestaurantTables save(RestaurantTables table);
     void deleteById( long id);
 }

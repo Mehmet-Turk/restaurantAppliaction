@@ -1,9 +1,9 @@
 package com.application.repositories;
 
-import com.application.model.Order;
+import com.application.model.RestaurantTables;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderRepository extends CrudRepository<Order, Long> {
+public interface RestaurantTablesRepository extends CrudRepository<RestaurantTables, Long> {
 }

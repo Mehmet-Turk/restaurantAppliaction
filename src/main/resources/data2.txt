@@ -60,70 +60,50 @@ CREATE TABLE reservation (
   startDate DATE,
   addBabyChair boolean
 );
-INSERT INTO account (accountId, firstName, lastName, phoneNumber, email, password, role)
+
+INSERT INTO account (firstName, lastName, phoneNumber, email, password, role)
 VALUES (1234, 'John', 'De Witt', '555-555-1234', 'johndoe@email.com', 'password123', 'user');
-INSERT INTO account (accountId, firstName, lastName, phoneNumber, email, password, role)
+INSERT INTO account (firstName, lastName, phoneNumber, email, password, role)
 VALUES (91011, 'Bob', 'Smith', '555-555-9101', 'bobsmith@email.com', 'password789', 'user');
-INSERT INTO account (accountId, firstName, lastName, phoneNumber, email, password, role)
+INSERT INTO account (firstName, lastName, phoneNumber, email, password, role)
 VALUES (121314, 'Alice', 'Johnson', '555-555-1213', 'alicejohnson@email.com', 'password101112', 'admin');
 
 
 
 
-INSERT INTO customer (customerId, paymentId, firstName, lastName, phoneNumber, email, address, isGuest)
+INSERT INTO customer (paymentId, firstName, lastName, phoneNumber, email, address, isGuest)
 VALUES
-(1, 101, 'John', 'Doe', '555-555-1234', 'johndoe@email.com', '123 Main St, Anytown USA', false),
-(2, 102, 'Jane', 'Smith', '555-555-5678', 'janesmith@email.com', '456 Elm St, Anytown USA', false),
-(3, 103, 'Bob', 'Johnson', '555-555-9101', 'bobjohnson@email.com', '789 Oak St, Anytown USA', false),
-(4, NULL, 'Sarah', 'Lee', '555-555-1212', 'sarahlee@email.com', '321 Maple St, Anytown USA', true),
-(5, NULL, 'Mark', 'Johnson', NULL, 'markjohnson@email.com', '10 Pine St, Anytown USA', true);
+(101, 'John', 'Doe', '555-555-1234', 'johndoe@email.com', '123 Main St, Anytown USA', false),
+(102, 'Jane', 'Smith', '555-555-5678', 'janesmith@email.com', '456 Elm St, Anytown USA', false),
+(103, 'Bob', 'Johnson', '555-555-9101', 'bobjohnson@email.com', '789 Oak St, Anytown USA', false),
+(NULL, 'Sarah', 'Lee', '555-555-1212', 'sarahlee@email.com', '321 Maple St, Anytown USA', true),
+(NULL, 'Mark', 'Johnson', NULL, 'markjohnson@email.com', '10 Pine St, Anytown USA', true);
 
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (1,100, 2, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (2, 101, 2, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (3, 102, 2, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (4, 103, 2, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (5, 104, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (6, 105, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (7, 106, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (8, 107, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (9, 108, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (10, 109, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (11, 110, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (12, 111, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (13, 112, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (14, 113, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (15, 114, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (16, 115, 4, true, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (17, 116, 6, false, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (18, 117, 6, false, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (19, 118, 6, false, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (20, 119, 4, false, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (21, 120, 6, false, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (22, 121, 6, false, true);
-INSERT INTO tables (tableId, tableNumber, seat, isMergeable, isAvailable)
-VALUES (23, 122, 6, false, true);
+INSERT INTO tables (tableNumber, seat, isMergeable, isAvailable)
+VALUES
+(100, 2, true, true),
+(101, 2, true, true),
+(102, 2, true, true),
+(103, 2, true, true),
+(104, 4, true, true),
+(105, 4, true, true),
+(106, 4, true, true),
+(107, 4, true, true),
+(108, 4, true, true),
+(109, 4, true, true),
+(110, 4, true, true),
+(111, 4, true, true),
+(112, 4, true, true),
+(113, 4, true, true),
+(114, 4, true, true),
+(115, 4, true, true),
+(116, 6, false, true),
+(117, 6, false, true),
+(118, 6, false, true),
+(119, 4, false, true),
+(120, 6, false, true),
+(121, 6, false, true),
+(122, 6, false, true);
 
 INSERT INTO menuItem (menuItemId, itemName, type, description, price, isAlcoholic, imagePath)
 VALUES (1, 'Classic Margherita Pizza', 'Pizza', 'Tomato sauce, mozzarella cheese, and basil leaves', 10.99, false, '/images/margherita.jpg');
