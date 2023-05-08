@@ -20,6 +20,17 @@ public class FakerUtil {
         return email.toLowerCase();
 
     }
+    public static String getFakeEmailAddress(String firstName, String lastName){
+        //String email = fakeValuesService.bothify("????##@gmail.com");
+
+        String email = firstName +
+                "." +
+                lastName.replaceAll("\\s", "") +
+                "@capgemini.com";
+
+        return email.toLowerCase();
+
+    }
     public static String getFakePhoneNUmber(){
         return  faker.numerify("06########");
     }
@@ -34,5 +45,9 @@ public class FakerUtil {
     }
     public static String getFakeLastName(){
         return faker.name().lastName();
+    }
+
+    public static String getFakePassword(){
+        return faker.internet().password(8, 12);
     }
 }

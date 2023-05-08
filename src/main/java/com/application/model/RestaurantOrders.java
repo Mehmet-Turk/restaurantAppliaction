@@ -20,7 +20,7 @@ public class RestaurantOrders {
     Customer customer;
     @OneToMany
     private List<MenuItem> menuItem = new ArrayList<>();
-
+    //OneToMany we should create a list in many relations.
     public RestaurantOrders(Customer customer, List<MenuItem> menuItem) {
         this.customer = customer;
         this.menuItem = menuItem;
