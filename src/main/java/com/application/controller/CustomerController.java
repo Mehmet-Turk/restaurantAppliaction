@@ -15,7 +15,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
     // Endpoint
-    // http://localhost:8080/api/paymentMethod
+    // http://localhost:8080/api/customer
     // POST
     @PostMapping(value = "customer", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer){
