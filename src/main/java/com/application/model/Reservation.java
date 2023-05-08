@@ -1,10 +1,7 @@
 package com.application.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,6 +14,7 @@ import java.util.List;
 @Setter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,10 +1,7 @@
 package com.application.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.List;
 @Setter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class RestaurantOrders {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +20,7 @@ public class RestaurantOrders {
     Customer customer;
     @OneToMany
     private List<MenuItem> menuItem = new ArrayList<>();
-
+    //OneToMany we should create a list in many relations.
     public RestaurantOrders(Customer customer, List<MenuItem> menuItem) {
         this.customer = customer;
         this.menuItem = menuItem;

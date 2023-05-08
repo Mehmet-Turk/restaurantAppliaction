@@ -1,17 +1,14 @@
 package com.application.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
-@jakarta.persistence.Table(name = "`Table`")
+@NoArgsConstructor
 public class RestaurantTables {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,9 +17,6 @@ public class RestaurantTables {
     int seat;
     boolean isMergeable;
     boolean isAvailable;
-
-    public RestaurantTables() {
-    }
 
     public RestaurantTables(int tableNumber, int seat, boolean isMergeable, boolean isAvailable) {
         this.tableNumber = tableNumber;

@@ -1,13 +1,8 @@
 package com.application;
 
-import com.application.model.Customer;
-import com.application.model.PaymentMethod;
-import com.application.model.Reservation;
-import com.application.model.RestaurantTables;
-import com.application.repositories.CustomerRepository;
-import com.application.repositories.PaymentMethodRepository;
-import com.application.repositories.ReservationRepository;
-import com.application.repositories.RestaurantTablesRepository;
+import com.application.model.*;
+import com.application.repositories.*;
+import com.application.util.FakerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,6 +22,8 @@ public class DemoApplication implements CommandLineRunner {
 	CustomerRepository customerRepository;
 	@Autowired
 	RestaurantTablesRepository restaurantTablesRepository;
+	@Autowired
+	AccountRepository accountRepository;
 
 	public static void main(String[] args) {
 //		ApplicationContext applicationContext = SpringApplication.run(DemoApplication.class, args);
@@ -56,6 +53,9 @@ public class DemoApplication implements CommandLineRunner {
 		Reservation reservation;
 		reservation = new Reservation(customer, table, LocalDate.of(22,2,2), LocalTime.MIDNIGHT,false );
 		reservationRepository.save(reservation);
+		Account account;
+		account = new Account("John", "De Witt", FakerUtil.getFakePhoneNUmber(), FakerUtil.getFakeEmailAddress("John", "De Wit t"),FakerUtil.getFakePassword(),"General Manager");
+		accountRepository.save(account);
 
 	}
 }
