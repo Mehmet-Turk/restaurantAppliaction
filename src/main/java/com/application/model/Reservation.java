@@ -18,7 +18,7 @@ import java.util.List;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    long reservationId;
     @ManyToOne
     Customer customer;
     @OneToMany
