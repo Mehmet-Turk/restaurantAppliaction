@@ -27,9 +27,10 @@ public class Reservation {
     LocalTime time;
     boolean addBabyChair;
 
-    public Reservation(Customer customer, RestaurantTables table, LocalDate date, LocalTime time, boolean addBabyChair) {
+    public Reservation(Customer customer, List<RestaurantTables> table, LocalDate date, LocalTime time, boolean addBabyChair) {
+//        this.table = Collections.singletonList(table);
         this.customer = customer;
-        this.table = Collections.singletonList(table);
+        this.table = table;
         this.date = date;
         this.time = time;
         this.addBabyChair = addBabyChair;

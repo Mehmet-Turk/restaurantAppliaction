@@ -1,13 +1,7 @@
 package com.application;
 
-import com.application.model.Customer;
-import com.application.model.PaymentMethod;
-import com.application.model.Reservation;
-import com.application.model.RestaurantTables;
-import com.application.repositories.CustomerRepository;
-import com.application.repositories.PaymentMethodRepository;
-import com.application.repositories.ReservationRepository;
-import com.application.repositories.RestaurantTablesRepository;
+import com.application.model.*;
+import com.application.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +25,10 @@ public class DemoApplication implements CommandLineRunner {
 	CustomerRepository customerRepository;
 	@Autowired
 	RestaurantTablesRepository restaurantTablesRepository;
+	@Autowired
+	MenuItemRepository menuItemRepository;
+	@Autowired
+	RestaurantOrdersRepository restaurantOrdersRepository;
 	List<RestaurantTables> loadedTables = new ArrayList<>();
 
 	public static void main(String[] args) {
@@ -58,13 +56,27 @@ public class DemoApplication implements CommandLineRunner {
 		Customer customer;
 		customer = new Customer(paymentMethod, "Ali", "Veli", "0329392212", "dadafaf", "fasfa", false);
 		customerRepository.save(customer);
+
+		MenuItem menuItem1 = new MenuItem("Pasta", "Pasta", "pasta", 12, false);
+		menuItemRepository.save(menuItem1);
+		MenuItem menuItem2 = new MenuItem("Hamburger", "Hamburger", "Hamburger", 14, false);
+		menuItemRepository.save(menuItem2);
+		List<MenuItem> orders = new ArrayList<>();
+		orders.add(menuItem1);
+		orders.add(menuItem2);
+		RestaurantOrders restaurantOrders;
+		restaurantOrders = new RestaurantOrders(customer, orders);
+		restaurantOrdersRepository.save(restaurantOrders);
 //		RestaurantTables table;
 //		table = new RestaurantTables(100, 3, false, true);
 //		restaurantTablesRepository.save(table);
 //		table = new RestaurantTables(101, 6, true, true);
 //		restaurantTablesRepository.save(table);
+		List<RestaurantTables> res1 = new ArrayList<>();
+		res1.add(loadedTables.get(0));
+		res1.add(loadedTables.get(2));
 		Reservation reservation;
-		reservation = new Reservation(customer, loadedTables.get(0), LocalDate.of(2023,2,2), LocalTime.MIDNIGHT,false );
+		reservation = new Reservation(customer, res1 , LocalDate.of(2023,2,2), LocalTime.MIDNIGHT,false );
 		reservationRepository.save(reservation);
 
 	}

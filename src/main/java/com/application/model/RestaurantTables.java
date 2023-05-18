@@ -15,14 +15,14 @@ public class RestaurantTables {
     long tableId;
     int tableNumber;
     int seat;
-    boolean isMergeable;
-    boolean isAvailable;
+    boolean mergeable;
+    boolean available;
 
-    public RestaurantTables(int tableNumber, int seat, boolean isMergeable, boolean isAvailable) {
+    public RestaurantTables(int tableNumber, int seat, boolean mergeable, boolean available) {
         this.tableNumber = tableNumber;
         this.seat = seat;
-        this.isMergeable = isMergeable;
-        this.isAvailable = isAvailable;
+        this.mergeable = mergeable;
+        this.available = available;
     }
 
 }

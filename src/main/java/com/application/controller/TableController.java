@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+@CrossOrigin(origins = "http://localhost:9090")
 @RestController
 @RequestMapping("/api")
 public class TableController {
@@ -26,7 +27,7 @@ public class TableController {
     // Endpoint
     // http://localhost:8080/api/table
     // GET
-    @GetMapping(value = "tables", produces = "application/json")
+    @GetMapping(value = "table", produces = "application/json")
     public Iterable<RestaurantTables> getAllTables(){
 
         return tableService.findAll();
