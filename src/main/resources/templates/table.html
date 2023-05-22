@@ -6,6 +6,7 @@
     <title>Table page</title>
     <style th:include="fragments/head :: styles" th:remove="tag"></style>
     <script th:include="fragments/head :: scripts" th:remove="tag"></script>
+    <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
@@ -26,7 +27,7 @@
 <body>
 <div th:insert="/fragments/menu :: menu">
 </div>
-<div th:insert="/fragments/header :: header">
+<div th:insert="/fragments/header1 :: header">
 </div>
 <!--table container-->
 <div class="container">
