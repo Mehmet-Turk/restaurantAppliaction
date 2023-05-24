@@ -11,6 +11,14 @@ public class Controller {
 
         return "main";
     }
+    // http://localhost:8080/contact
+    @GetMapping("/contact")
+    public String contactPage() {
+
+        System.out.println("Inside contactPage");
+
+        return "contact";
+    }
 
 
     // http://localhost:8080/api/table
