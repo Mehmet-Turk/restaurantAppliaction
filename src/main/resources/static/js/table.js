@@ -11,10 +11,6 @@ function init(){
         console.log("Inside click of editTableButton");
         // Get the data from selected row and fill fields in modal
 
-//        $("#name").val('XXXXX');
-//        $("#address").val('ZZZZZZZZ');
-//        $("#age").val(23);
-
         if (tableTable.row($('.selected')).data() == undefined) {
             alert("Select table first");
         }else{
@@ -64,7 +60,7 @@ function initTableTable() {
 
     console.log('inside initTableTable' );
 
-    // Create columns (with titles) for datatable: id, name, address, age
+    // Create columns (with titles) for datatable: id, tableNumber, seat, mergeable, available
     columns = [
         { "title":  "Table ID",//@todo
             "data": "tableId" ,
