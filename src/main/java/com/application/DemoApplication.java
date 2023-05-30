@@ -29,7 +29,12 @@ public class DemoApplication implements CommandLineRunner {
 	MenuItemRepository menuItemRepository;
 	@Autowired
 	RestaurantOrdersRepository restaurantOrdersRepository;
+	@Autowired
+	StockRepository stockRepository;
 	List<RestaurantTables> loadedTables = new ArrayList<>();
+
+	List<Stock> loadedStocks = new ArrayList<>();
+
 
 	public static void main(String[] args) {
 //		ApplicationContext applicationContext = SpringApplication.run(DemoApplication.class, args);
@@ -50,6 +55,7 @@ public class DemoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		LoadTables();
+		LoadStocks();
 		PaymentMethod paymentMethod;
 		paymentMethod = new PaymentMethod("oylesine");
 		paymentMethodRepository.save(paymentMethod);
@@ -109,6 +115,38 @@ public class DemoApplication implements CommandLineRunner {
 			tables.add(table);
 		}
 		loadedTables = tables;
+
+	}
+
+	public void LoadStocks(){
+		List<String[]> data = new ArrayList<>();
+		try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/StockEngCSVShort.csv"))) {
+			String line;
+			int k=0;
+			while ((line = br.readLine()) != null) {
+				if (k==0){
+					k++;
+					continue;
+				}
+				String[] fields = line.split(",");
+				data.add(fields);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Stock stock;
+		List<Stock> stocks = new ArrayList<>();
+		for (String [] arr: data) {
+
+			String name = arr[0].replaceAll(",$", "");
+			int recentAmount = Integer.parseInt(arr[1].replaceAll(",$", ""));
+			int minAmount = Integer.parseInt(arr[2].replaceAll(",$", ""));
+
+			stock = new Stock(name, recentAmount, minAmount);
+			stockRepository.save(stock);
+			stocks.add(stock);
+		}
+		loadedStocks = stocks;
 
 	}
 

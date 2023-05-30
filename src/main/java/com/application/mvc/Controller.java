@@ -20,6 +20,15 @@ public class Controller {
         return "contact";
     }
 
+    // http://localhost:8080/stock
+    @GetMapping("/stock")
+    public String stockPage() {
+
+        System.out.println("Inside stockPage");
+
+        return "stock";
+    }
+
 
     // http://localhost:8080/api/table
     @GetMapping("/menu")
@@ -42,5 +51,16 @@ public class Controller {
     @GetMapping("/reservation")
     public String reservationPage(){
         return "reservation";
+    }
+    // http://localhost:8080/reservations
+    @GetMapping("/reservations")
+    public String reservationsPage(){
+        return "reservations";
+    }
+
+    // http://localhost:8080/orders
+    @GetMapping("/orders")
+    public String ordersPage(){
+        return "orders";
     }
 }

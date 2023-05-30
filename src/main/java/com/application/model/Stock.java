@@ -19,4 +19,10 @@ public class Stock {
     String name;
     int recentAmount;
     int minAmount;
+
+    public Stock(String name, int recentAmount, int minAmount) {
+        this.name = name;
+        this.recentAmount = recentAmount;
+        this.minAmount = minAmount;
+    }
 }
