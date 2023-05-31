@@ -30,7 +30,7 @@ public class Controller {
     }
 
 
-    // http://localhost:8080/api/table
+    // http://localhost:8080/menu
     @GetMapping("/menu")
     public String menuPage() {
 
@@ -39,6 +39,14 @@ public class Controller {
         // use customer for normal use
         // use customerT for 'template' use (header, menu, footer, etc.)
         return "menu";
+    }
+    // http://localhost:8080/about
+    @GetMapping("/about")
+    public String aboutPage() {
+
+        System.out.println("Inside aboutPage");
+
+        return "about";
     }
     @GetMapping("/login")
     public String loginPage(){
