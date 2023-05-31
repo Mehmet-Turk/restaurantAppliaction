@@ -4,8 +4,8 @@
     <meta th:include="fragments/head :: metas" th:remove="tag"/>
     <link href="/css/main.css" rel="stylesheet" />
     <title>Table page</title>
-    <style th:include="fragments/head :: styles" th:remove="tag"></style>
-    <script th:include="fragments/head :: scripts" th:remove="tag"></script>
+    <style th:include="fragments/head1 :: styles" th:remove="tag"></style>
+    <script th:include="fragments/head1 :: scripts" th:remove="tag"></script>
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
@@ -82,7 +82,7 @@
 </div>
 
 <div class=“row”>
-    <div class=“col-md-12” style="display:flex; justify-content: space-between; width:800px;margin-left:350px;">
+    <div class=“col-md-12” style="display:flex; justify-content: space-between; width:800px;margin:auto;margin-bottom:20px;">
         <!--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerModal">New Customer</button>   -->
         <button type="button" class="btn btn-primary" id="newTableButton">New Table</button>
         <button type="button" class="btn btn-primary" id="editTableButton">Edit Table</button>
