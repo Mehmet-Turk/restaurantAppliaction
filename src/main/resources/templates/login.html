@@ -48,34 +48,34 @@
 
 
 <!-- Login Start -->
-<div class="container-xxl py-3 px-0 wow fadeInUp" data-wow-delay="0.1s" id="login">
+<div class="container-xxl px-0 wow fadeInUp" data-wow-delay="0.1s" id="login">
     <div class="row g-0">
         <div class="col-md-6 bg-dark d-flex align-items-center">
             <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-start text-primary fw-normal">Login</h5>
-                <h1 class="text-white mb-4">Welcome !</h1>
+                <h1 class="text-white mb-4 cambria">Welcome !</h1>
                 <form>
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                <label for="email">Your Email</label>
+                                <label for="email" class="cambria">Your Email</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="password" class="form-control" id="password"
                                        placeholder="Your Password">
-                                <label for="password">Your Password</label>
+                                <label for="password" class="cambria">Your Password</label>
                             </div>
                         </div>
 
 
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Login</button>
+                            <button class="btn btn-primary w-100 py-3 cambria" type="submit">Login</button>
                         </div>
                         <span class="forgot-password">
-                          <a href="no-javascript1.html" title="Forgot Password" id="link-reset">Forgot Password?</a>
+                          <a th:href="@{/login}" title="Forgot Password" id="link-reset" class="cambria">Forgot Password?</a>
                         </span>
                     </div>
                 </form>
