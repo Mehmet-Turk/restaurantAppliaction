@@ -17,13 +17,14 @@ $(function () {
 
   });
     // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 45) {
-            $('.navbar').addClass('sticky-top shadow-sm');
-        } else {
-            $('.navbar').removeClass('sticky-top shadow-sm');
-        }
-    });
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 45) {
+      $('.navbar').addClass('sticky-top shadow-sm').css('width', '100%');
+    } else {
+      $('.navbar').removeClass('sticky-top shadow-sm').css('width', 'auto');
+    }
+  });
+
     
     
     // Dropdown on mouse hover
@@ -63,7 +64,7 @@ $(function () {
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({scrollTop: 0}, 200, 'easeInOutExpo');
         return false;
     });
 
@@ -202,3 +203,4 @@ document.getElementById('select').addEventListener('change', function() {
     roomNumberContainer.style.display = 'none';
   }
 });
+

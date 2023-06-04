@@ -54,7 +54,7 @@
 
 
 <!-- Reservation Start -->
-<div class="container-xxl py-3 px-0 wow fadeInUp" data-wow-delay="0.1s" id="reservation">
+<div class="container-xxl px-0 wow fadeInUp" data-wow-delay="0.1s" id="reservation">
     <div class="row g-0">
         <div class="col-md-6">
             <div class="video">
@@ -64,19 +64,20 @@
         <div class="col-md-6 bg-dark d-flex align-items-center">
             <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
-                <h1 class="text-white mb-4">Book A Table Online</h1>
+                <h2 class="text-white mb-4" style="font-family: Cambria;">Book A Table</h2>
                 <form>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                                <label for="name">Full Name</label>
+                                <label for="name" style="font-family: Cambria;">*Full Name</label>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email1" placeholder="Your Email" required>
-                                <label>Email</label>
+                                <input type="email" class="form-control"  id="email1" placeholder="Your Email" required>
+                                <label style="font-family: Cambria;">*E-mail</label>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -84,11 +85,11 @@
                                 <input class="form-control datetimepicker-input" type="text" id="myDateInput"
                                        name="myDateInput" required placeholder="Date"
                                        data-toggle="datetimepicker"/>
-                                <label for="myDateInput">Date</label>
+                                <label for="myDateInput" style="font-family: Cambria;">*Date</label>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <label class="text-white">Time</label>
+                            <label class="text-white" style="font-family: Cambria;">*Time</label>
                             <div id="timeSelection" class="form-control datetimepicker-input"
                                  data-toggle="datetimepicker"></div>
                         </div>
@@ -97,7 +98,7 @@
                         <div class="col-md-6  " id="phoneNumber">
                             <div
                                     class="pt-3 form-floating form-control bg-white  justify-content-center form-group ">
-                                <input class="form-control" placeholder="Phone Number"
+                                <input class="form-control" style="font-family: Cambria;" placeholder="Phone Number"
                                        data-toggle="datetimepicker" type="tel" id="phone" pattern="\d{12}"
                                        required>
                             </div>
@@ -108,24 +109,24 @@
                             <div class="form-floating">
                                 <input type="text" class="form-control datetimepicker-input" id="People"
                                        placeholder="No Of People" data-toggle="datetimepicker" required/>
-                                <label>Number Of People</label>
+                                <label style="font-family: Cambria;">*Number Of People</label>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <select class="form-select" id="select">
-                                    <option value="Yes">Yes</option>
-                                    <option selected value="No">No</option>
+                                    <option value="Yes" style="font-family: Cambria;">Yes</option>
+                                    <option selected value="No" style="font-family: Cambria;">No</option>
                                 </select>
-                                <label for="select1">Hotel guest</label>
+                                <label for="select1" style="font-family: Cambria;">Hotel guest</label>
                             </div>
                         </div>
                         <!--                            -->
                         <div class="col-md-6" id="roomNumberContainer" style="display: none;">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="roomNumber" placeholder="Room Number" required>
-                                <label for="roomNumber">Room Number</label>
+                                <label for="roomNumber" style="font-family: Cambria;">Room Number</label>
                             </div>
                         </div>
                         <!--                            -->
@@ -133,10 +134,10 @@
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <select class="form-select" id="select1">
-                                    <option value="Yes">Yes</option>
-                                    <option selected value="No">No</option>
+                                    <option value="Yes" style="font-family: Cambria;">Yes</option>
+                                    <option selected value="No" style="font-family: Cambria;">No</option>
                                 </select>
-                                <label for="select1">Baby Chair</label>
+                                <label for="select1" style="font-family: Cambria;">Baby Chair</label>
                             </div>
                         </div>
                         <!-- <div class="col-12">
@@ -147,7 +148,7 @@
                             </div>
                         </div> -->
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                            <button class="btn btn-primary cambria w-100 py-3" type="submit" >Book Now</button>
                         </div>
                     </div>
                 </form>
