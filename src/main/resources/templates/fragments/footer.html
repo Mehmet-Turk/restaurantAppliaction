@@ -3,23 +3,28 @@
 <head th:replace="fragments/head :: head"></head>
 <body>
 
-    <footer th:fragment="footer">
-        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" id="footer">
-            <div class="container py-5">
+    <footer th:fragment="footer" class="footer mt-5">
+        <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s" id="footer">
+            <div class="container">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                        <a class="btn btn-link" href="#">Home</a>
-                        <a class="btn btn-link" href="#">Contact Us</a>
-                        <a class="btn btn-link" href="#reservation">Reservation</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
+<!--                        <a class="btn btn-link" href="#">Home</a>-->
+                        <a th:href="@{/}" class="btn btn-link cambria">Home</a>
+                        <a th:href="@{/contact}" class="btn btn-link cambria">Contact</a>
+                        <a th:href="@{/about}" class="btn btn-link cambria">About Us</a>
+                        <a th:href="@{/reservation}" class="btn btn-link cambria">Reservation</a>
+<!--                        <a class="btn btn-link" href="#">About Us</a>-->
+<!--                        <a class="btn btn-link" href="#">Contact Us</a>-->
+<!--                        <a class="btn btn-link" href="#reservation">Reservation</a>-->
+<!--                        <a class="btn btn-link" href="">Privacy Policy</a>-->
+<!--                        <a class="btn btn-link" href="">Terms & Condition</a>-->
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, Peking, China</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@molveno​.com</p>
+                        <p class="mb-2 cambria"><i class="fa fa-map-marker-alt me-3" ></i>Park Street, Peking, China</p>
+                        <p class="mb-2 cambria"><i class="fa fa-phone-alt me-3"></i>020 15 310 4545</p>
+                        <p class="mb-2 cambria"><i class="fa fa-envelope me-3"></i>info@molveno.com</p>
                         <!-- <div class="d-flex pt-2">
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -29,10 +34,10 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
-                        <h5 class="text-light fw-normal">Monday - Saturday</h5>
-                        <p>09AM - 09PM</p>
-                        <h5 class="text-light fw-normal">Sunday</h5>
-                        <p>10AM - 08PM</p>
+                        <h6 class="text-light fw-normal cambria">Restaurant</h6>
+                        <p style="font-family: Cambria;" >07:00 - 21:00</p>
+                        <h6 class="text-light fw-normal cambria">Bar</h6>
+                        <p style="font-family: Cambria;" >07:00 - 03:00</p>
                     </div>
                     <!-- <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
@@ -46,24 +51,24 @@
                     </div> -->
                 </div>
             </div>
-            <div class="container">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start ">
+<!--            <div class="container">-->
+<!--                <div class="copyright">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6 text-center text-md-start ">-->
 
 
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <div class="footer-menu">
-                                <a href="index.html">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--                        </div>-->
+<!--                        <div class="col-md-6 text-center text-md-end">-->
+<!--                            <div class="footer-menu">-->
+<!--                                <a href="index.html">Home</a>-->
+<!--                                <a href="">Cookies</a>-->
+<!--                                <a href="">Help</a>-->
+<!--                                <a href="">FQAs</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </footer>
 
