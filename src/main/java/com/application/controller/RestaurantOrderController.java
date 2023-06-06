@@ -14,7 +14,7 @@ public class RestaurantOrderController {
     @Autowired
     RestaurantOrdersService restaurantOrdersService;
     // Endpoint
-    // http://localhost:8080/api/table
+    // http://localhost:8080/api/orders
     // GET
     @GetMapping(value = "orders", produces = "application/json")
     public Iterable<RestaurantOrders> getAllOrders(){

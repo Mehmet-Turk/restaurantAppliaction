@@ -71,4 +71,10 @@ public class Controller {
     public String ordersPage(){
         return "orders";
     }
+
+    // http://localhost:8080/forgot
+    @GetMapping("/forgot")
+    public String forgotPage(){
+        return "forgot";
+    }
 }
