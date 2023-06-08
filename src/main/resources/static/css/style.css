@@ -543,3 +543,18 @@
   opacity: 2;
 }
 
+.roww {
+  position: relative;
+  z-index: 1;
+}
+
+.col-md-112 {
+  display: flex;
+  justify-content: center;
+}
+
+.bekletmede {
+  position: relative;
+  z-index: -1;
+}
+

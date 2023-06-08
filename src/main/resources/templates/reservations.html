@@ -22,7 +22,13 @@
             init();
         });
     </script>
-
+    <style>
+        .container {
+            border: 1px solid #000;
+            margin: 10px auto;
+            padding: 60px;
+        }
+    </style>
 </head>
 <body>
 <!--<div th:insert="/fragments/menu :: menu">-->
@@ -56,35 +62,35 @@
                 </div>
                 <div class="form-group">
                     <label for="firstName">First Name:</label>
-                    <input type="text" class="form-control" id="firstName">
+                    <input type="text" class="form-control" autocomplete="off" id="firstName">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" class="form-control" id="lastName">
+                    <input type="text" class="form-control" autocomplete="off" id="lastName">
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input type="text" class="form-control" id="phoneNumber">
+                    <input type="text" class="form-control" autocomplete="off" id="phoneNumber">
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail Address:</label>
-                    <input type="text" class="form-control" id="email">
+                    <input type="text" class="form-control" autocomplete="off" id="email">
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
-                    <input type="text" class="form-control" id="address">
+                    <input type="text" class="form-control" autocomplete="off" id="address">
                 </div>
                 <div class="form-group">
                     <label for="date">Date:</label>
-                    <input type="date" class="form-control" id="date">
+                    <input type="date" class="form-control" autocomplete="off" id="date">
                 </div>
                 <div class="form-group">
                     <label for="time">Time:</label>
-                    <input type="time" class="form-control" id="time">
+                    <input type="time" class="form-control" autocomplete="off" id="time">
                 </div>
                 <div class="form-group">
                     <label for="addBabyChair">BabyChair:</label>
-                    <input type="text" class="form-control" id="addBabyChair">
+                    <input type="text" class="form-control" autocomplete="off" id="addBabyChair">
                 </div>
 <!--                <div class="form-group">-->
 <!--                    <label for="seat">Seat:</label>-->
@@ -111,15 +117,13 @@
 </div>
 </div>
 
-<div class=“row”>
-    <div class="col-md-12" style="display: flex; justify-content: center;" >
+<div class="roww col-md-112">
         <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="newReservationButton">New Reservation</button>
         <span style="margin: 0 10px;"></span>
         <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="editReservationButton">Edit Reservation</button>
         <span style="margin: 0 10px;"></span>
         <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="deleteReservationButton">Delete Reservation</button>
     </div>
-
 </div>
 
 <div id="tableDeleteModal" class="modal fade" role="dialog">
@@ -145,8 +149,10 @@
 
     </div>
 </div>
-
-
+<br>
+<footer style="height: 85px; background-color: #0f172b; position: static; bottom: 0; left: 0; width: 100%;"></footer>
+    <!-- Footer içeriği -->
+<!--</footer>-->
 <!--<div th:insert="/fragments/footer :: footer">-->
 <!--</div>-->
 
