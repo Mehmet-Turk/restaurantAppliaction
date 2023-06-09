@@ -22,14 +22,23 @@
             init();
         });
     </script>
-
+    <style>
+        .container {
+            border: 1px solid #000;
+            margin: 10px auto;
+            padding: 115px;
+        }
+    </style>
 </head>
 <body>
 <!--<div th:insert="/fragments/menu :: menu">-->
 <!--</div>-->
 <div th:insert="/fragments/headerForStock :: header">
 </div>
-<h2>This is just a template you need to create orders js and connect it with this page.</h2>
+<br>
+<div style="text-align: center;">
+    <h2>Coming Soon</h2>
+</div>
 
 <!--table container-->
 <div class="container"  style="margin-top:20px;">
@@ -83,12 +92,12 @@
 </div>
 </div>
 
-<div class=“row”>
-    <div class=“col-md-12” style="display:flex; justify-content: space-between; width:800px;margin-left:350px;">
-        <!--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerModal">New Customer</button>   -->
-        <button type="button" class="btn btn-primary" id="newTableButton">New Table</button>
-        <button type="button" class="btn btn-primary" id="editTableButton">Edit Table</button>
-        <button type="button" class="btn btn-primary" id="deleteTableButton">Delete Table</button>
+<div class="roww col-md-112">
+        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="newTableButton">New Table</button>
+        <span style="margin: 0 10px;"></span>
+        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="editTableButton">Edit Table</button>
+        <span style="margin: 0 10px;"></span>
+        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="deleteTableButton">Delete Table</button>
     </div>
 </div>
 
@@ -115,6 +124,8 @@
 
     </div>
 </div>
+<br>
+<footer style="height: 85px; background-color: #0f172b; position: static; bottom: 0; left: 0; width: 100%;"></footer>
 
 
 <!--<div th:insert="/fragments/footer :: footer">-->

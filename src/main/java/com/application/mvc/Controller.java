@@ -79,4 +79,16 @@ public class Controller {
     public String ordersPage(){
         return "orders";
     }
+
+    // http://localhost:8080/checkout
+    @GetMapping("/checkout")
+    public String checkoutPage(){
+        return "checkout";
+    }
+
+    // http://localhost:8080/forgot
+    @GetMapping("/forgot")
+    public String forgotPage(){
+        return "forgot";
+    }
 }

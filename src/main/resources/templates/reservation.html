@@ -69,38 +69,55 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" required autocomplete="off">
                                 <label for="name" style="font-family: Cambria;">*Full Name</label>
 
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control"  id="email1" placeholder="Your Email" required>
+                                <input type="email" class="form-control"  id="email1" placeholder="Your Email" required autocomplete="off">
                                 <label style="font-family: Cambria;">*E-mail</label>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-floating date" id="date4">
                                 <input class="form-control datetimepicker-input" type="text" id="myDateInput"
-                                       name="myDateInput" required placeholder="Date"
+                                       name="myDateInput" required autocomplete="off" placeholder="Date"
                                        data-toggle="datetimepicker"/>
                                 <label for="myDateInput" style="font-family: Cambria;">*Date</label>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <label class="text-white" style="font-family: Cambria;">*Time</label>
-                            <div id="timeSelection" class="form-control datetimepicker-input"
-                                 data-toggle="datetimepicker"></div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary cambria" onclick="toggleTimeSelection()">
+                                    Select Time
+                                </button>
+                                <div id="timeSelection" class="form-control datetimepicker-input cambria mt-3"
+                                     data-toggle="datetimepicker" style="display: none;"></div>
+                            </div>
                         </div>
+
+
+                        <script>
+    function toggleTimeSelection() {
+        var timeSelection = document.getElementById('timeSelection');
+        if (timeSelection.style.display === 'none') {
+            timeSelection.style.display = 'block';
+        } else {
+            timeSelection.style.display = 'none';
+        }
+    }
+</script>
+
 
 
                         <div class="col-md-6  " id="phoneNumber">
                             <div
                                     class="pt-3 form-floating form-control bg-white  justify-content-center form-group ">
-                                <input class="form-control" style="font-family: Cambria;" placeholder="Phone Number"
+                                <input class="form-control" style="font-family: Cambria;" placeholder="*Phone Number"
                                        data-toggle="datetimepicker" type="tel" id="phone" pattern="\d{12}"
-                                       required>
+                                       required autocomplete="off">
                             </div>
                         </div>
 
@@ -108,8 +125,8 @@
                         <div class="col-md-6 ">
                             <div class="form-floating">
                                 <input type="text" class="form-control datetimepicker-input" id="People"
-                                       placeholder="No Of People" data-toggle="datetimepicker" required/>
-                                <label style="font-family: Cambria;">*Number Of People</label>
+                                       placeholder="No Of People" data-toggle="datetimepicker" required autocomplete="off">
+                                <label style="font-family: Cambria;">*Number of People</label>
                             </div>
                         </div>
 
@@ -125,8 +142,8 @@
                         <!--                            -->
                         <div class="col-md-6" id="roomNumberContainer" style="display: none;">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="roomNumber" placeholder="Room Number" required>
-                                <label for="roomNumber" style="font-family: Cambria;">Room Number</label>
+                                <input type="text" class="form-control" id="roomNumber" placeholder="Room Number" autocomplete="off">
+                                <label for="roomNumber" style="font-family: Cambria;">*Room Number</label>
                             </div>
                         </div>
                         <!--                            -->
