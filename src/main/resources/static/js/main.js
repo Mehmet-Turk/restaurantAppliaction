@@ -1,4 +1,4 @@
-$(function () {
+(function ($) {
     "use strict";
 
     // Spinner
@@ -117,7 +117,7 @@ $(function () {
     });
     
 
-//(jQuery);
+(jQuery);
 
 
 

@@ -11,6 +11,14 @@ public class Controller {
 
         return "main";
     }
+    // http://localhost:8080/stock
+    @GetMapping("/stock")
+    public String stockPage() {
+
+        System.out.println("Inside stockPage");
+
+        return "stock";
+    }
     // http://localhost:8080/contact
     @GetMapping("/contact")
     public String contactPage() {
@@ -20,13 +28,13 @@ public class Controller {
         return "contact";
     }
 
-    // http://localhost:8080/stock
-    @GetMapping("/stock")
-    public String stockPage() {
+    // http://localhost:8080/stocks
+    @GetMapping("/stocks")
+    public String stocksPage() {
 
         System.out.println("Inside stockPage");
 
-        return "stock";
+        return "stocks";
     }
 
 
@@ -72,6 +80,8 @@ public class Controller {
         return "orders";
     }
 
+
+
     // http://localhost:8080/checkout
     @GetMapping("/checkout")
     public String checkoutPage(){
@@ -82,5 +92,10 @@ public class Controller {
     @GetMapping("/forgot")
     public String forgotPage(){
         return "forgot";
+    }
+
+    @GetMapping("/reservationDetails")
+    public String reservationDetailsPage(){
+        return "reservationDetails";
     }
 }

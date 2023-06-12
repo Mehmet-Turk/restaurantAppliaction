@@ -43,7 +43,7 @@ public class TableController {
     // Endpoint
     // http://localhost:8080/api/table/2
     // GET
-    @GetMapping(value = "tables/{id}", produces = "application/json")
+    @GetMapping(value = "table/{id}", produces = "application/json")
     public ResponseEntity<RestaurantTables> getTableById(@PathVariable long id){
         Optional<RestaurantTables> table = tableService.findById(id);
         return table.isPresent()? ResponseEntity.ok().body(table.get()):ResponseEntity.notFound().build();
@@ -56,12 +56,13 @@ public class TableController {
     // Endpoint
     // http://localhost:8080/api/table/filter
     // GET
-    @PostMapping(value = "tables/filter", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "table/filter", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Iterable<RestaurantTables>> getAllAvailableTables(@RequestBody RestaurantTables restaurantTables){
         return ResponseEntity.ok().body(
                 tableService.filterRestaurantTablesByAvailable(restaurantTables));
     }
-    @GetMapping(value = "tables/filter/{isAvailable}", consumes = "application/json", produces = "application/json")
+    //http://localhost:8080/api/table/filter/true
+    @GetMapping(value = "table/filter/{isAvailable}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Iterable<RestaurantTables>> getAllAvailableTables(@PathVariable boolean isAvailable){
         return ResponseEntity.ok().body(
                 tableService.filterRestaurantTablesByAvailable(isAvailable));

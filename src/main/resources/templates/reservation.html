@@ -38,11 +38,22 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.min.js"></script>
+    <script src="/js/reservationDetails.js"></script>
+    <script src="/js/reservation.js"></script>
+
+
+
     <div th:insert="/fragments/header1 :: header"></div>
     <!--    <script src="/js/main.js"></script>-->
 
     <!-- Test -->
     <!-- Template Stylesheet -->
+    <script>
+        $( document ).ready(function() {
+            console.log( "initializing" );
+            init();
+        });
+    </script>
 
 
 </head>
@@ -65,27 +76,29 @@
             <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
                 <h2 class="text-white mb-4" style="font-family: Cambria;">Book A Table</h2>
-                <form>
+                <form id="reservationForm">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name" required autocomplete="off">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" >
                                 <label for="name" style="font-family: Cambria;">*Full Name</label>
 
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 ">
                             <div class="form-floating">
-                                <input type="email" class="form-control"  id="email1" placeholder="Your Email" required autocomplete="off">
-                                <label style="font-family: Cambria;">*E-mail</label>
+                                <input type="text" class="form-control datetimepicker-input" id="People"
+                                       placeholder="No Of People"   autocomplete="off">
+                                <label style="font-family: Cambria;">*Number of People</label>
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="form-floating date" id="date4">
                                 <input class="form-control datetimepicker-input" type="text" id="myDateInput"
-                                       name="myDateInput" required autocomplete="off" placeholder="Date"
-                                       data-toggle="datetimepicker"/>
-                                <label for="myDateInput" style="font-family: Cambria;">*Date</label>
+                                       name="myDateInput"  placeholder="Date"
+                                       />
+                                <label  style="font-family: Cambria;">*Date</label>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -117,16 +130,15 @@
                                     class="pt-3 form-floating form-control bg-white  justify-content-center form-group ">
                                 <input class="form-control" style="font-family: Cambria;" placeholder="*Phone Number"
                                        data-toggle="datetimepicker" type="tel" id="phone" pattern="\d{12}"
-                                       required autocomplete="off">
+                                       >
                             </div>
                         </div>
 
 
-                        <div class="col-md-6 ">
+                        <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control datetimepicker-input" id="People"
-                                       placeholder="No Of People" data-toggle="datetimepicker" required autocomplete="off">
-                                <label style="font-family: Cambria;">*Number of People</label>
+                                <input type="email" class="form-control"  id="email1" placeholder="Your Email" >
+                                <label style="font-family: Cambria;">*E-mail</label>
                             </div>
                         </div>
 
@@ -167,6 +179,7 @@
                         <div class="col-12">
                             <button class="btn btn-primary cambria w-100 py-3" type="submit" >Book Now</button>
                         </div>
+
                     </div>
                 </form>
             </div>

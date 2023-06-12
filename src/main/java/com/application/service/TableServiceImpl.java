@@ -28,8 +28,6 @@ public class TableServiceImpl implements TableService{
         return restaurantTablesRepository.save(table);
     }
 
-
-
     @Override
     public void deleteById(long id) {
         restaurantTablesRepository.deleteById(id);
