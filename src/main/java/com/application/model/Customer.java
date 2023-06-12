@@ -17,22 +17,19 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long customerId;
-    @OneToMany
-    private List<PaymentMethod> paymentMethod = new ArrayList<>();
-    String firstName;
-    String lastName;
+//    @OneToMany
+//    private List<PaymentMethod> paymentMethod = new ArrayList<>();
+    String fullName;
+
     String phoneNumber;
     String email;
-    String address;
-    boolean isGuest;
+    int roomNumber;
+//    boolean isGuest;
 
-    public Customer(PaymentMethod paymentMethod, String firstName, String lastName, String phoneNumber, String email, String address, boolean isGuest) {
-        this.paymentMethod = Collections.singletonList(paymentMethod);
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Customer(String fullName, String phoneNumber, String email,int roomNumber) {
+        this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.address = address;
-        this.isGuest = isGuest;
+        this.roomNumber = roomNumber;
     }
 }

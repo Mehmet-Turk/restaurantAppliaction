@@ -80,6 +80,8 @@ public class Controller {
         return "orders";
     }
 
+
+
     // http://localhost:8080/checkout
     @GetMapping("/checkout")
     public String checkoutPage(){
@@ -90,5 +92,10 @@ public class Controller {
     @GetMapping("/forgot")
     public String forgotPage(){
         return "forgot";
+    }
+
+    @GetMapping("/reservationDetails")
+    public String reservationDetailsPage(){
+        return "reservationDetails";
     }
 }

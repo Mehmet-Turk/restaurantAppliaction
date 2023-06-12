@@ -13,5 +13,5 @@ public interface ReservationService {
     Optional<Reservation> findById(long id);
     Reservation save(Reservation reservation);
     void remove( long id);
-    Iterable<Reservation> filterReservationForBabyChair(Reservation reservation);
+//    Iterable<Reservation> filterReservationForBabyChair(Reservation reservation);
 }

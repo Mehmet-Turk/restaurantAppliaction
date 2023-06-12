@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RestaurantTablesRepository extends CrudRepository<RestaurantTables, Long> {
+
+
 }

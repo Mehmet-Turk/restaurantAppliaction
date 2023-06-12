@@ -34,11 +34,11 @@ public class ReservationController {
     // Endpoint
     // http://localhost:8080/api/reservation/filter/true
     // GET
-    @PostMapping(value = "reservation/filter", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Iterable<Reservation>> getAllReservationsOnDate(@RequestBody Reservation reservation) {
-        return ResponseEntity.ok().body(
-                reservationService.filterReservationForBabyChair(reservation));
-    }
+//    @PostMapping(value = "reservation/filter", consumes = "application/json", produces = "application/json")
+//    public ResponseEntity<Iterable<Reservation>> getAllReservationsOnDate(@RequestBody Reservation reservation) {
+//        return ResponseEntity.ok().body(
+//                reservationService.filterReservationForBabyChair(reservation));
+//    }
 
     // Endpoint
     // http://localhost:8080/api/reservation/2

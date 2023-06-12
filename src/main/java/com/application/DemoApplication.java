@@ -60,19 +60,19 @@ public class DemoApplication implements CommandLineRunner {
 		paymentMethod = new PaymentMethod("oylesine");
 		paymentMethodRepository.save(paymentMethod);
 		Customer customer;
-		customer = new Customer(paymentMethod, "Ali", "Veli", "0329392212", "dadafaf", "fasfa", false);
-		customerRepository.save(customer);
+//		customer = new Customer(paymentMethod, "Ali", "Veli", "0329392212", "dadafaf", "fasfa", false);
+//		customerRepository.save(customer);
 
-		MenuItem menuItem1 = new MenuItem("Pasta", "Pasta", "pasta", 12, false);
-		menuItemRepository.save(menuItem1);
-		MenuItem menuItem2 = new MenuItem("Hamburger", "Hamburger", "Hamburger", 14, false);
-		menuItemRepository.save(menuItem2);
-		List<MenuItem> orders = new ArrayList<>();
-		orders.add(menuItem1);
-		orders.add(menuItem2);
-		RestaurantOrders restaurantOrders;
-		restaurantOrders = new RestaurantOrders(customer, orders);
-		restaurantOrdersRepository.save(restaurantOrders);
+//		MenuItem menuItem1 = new MenuItem("Pasta", "Pasta", "pasta", 12, false);
+//		menuItemRepository.save(menuItem1);
+//		MenuItem menuItem2 = new MenuItem("Hamburger", "Hamburger", "Hamburger", 14, false);
+//		menuItemRepository.save(menuItem2);
+//		List<MenuItem> orders = new ArrayList<>();
+//		orders.add(menuItem1);
+//		orders.add(menuItem2);
+//		RestaurantOrders restaurantOrders;
+//		restaurantOrders = new RestaurantOrders(customer, orders);
+//		restaurantOrdersRepository.save(restaurantOrders);
 //		RestaurantTables table;
 //		table = new RestaurantTables(100, 3, false, true);
 //		restaurantTablesRepository.save(table);
@@ -81,8 +81,11 @@ public class DemoApplication implements CommandLineRunner {
 		List<RestaurantTables> res1 = new ArrayList<>();
 		res1.add(loadedTables.get(0));
 		res1.add(loadedTables.get(2));
+//		Reservation reservation;
+//		reservation = new Reservation(customer, res1 , LocalDate.of(2023,2,2), LocalTime.MIDNIGHT,false );
+//		reservationRepository.save(reservation);
 		Reservation reservation;
-		reservation = new Reservation(customer, res1 , LocalDate.of(2023,2,2), LocalTime.MIDNIGHT,false );
+		reservation = new Reservation(res1, LocalDate.now(), LocalTime.MIDNIGHT, false, "ALi", 4, "234423", "rer", "321");
 		reservationRepository.save(reservation);
 
 	}
