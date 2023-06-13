@@ -22,13 +22,13 @@
             init();
         });
     </script>
-    <style>
-        .container {
-            border: 1px solid #000;
-            margin: 10px auto;
-            padding: 60px;
-        }
-    </style>
+<!--    <style>-->
+<!--        .container {-->
+<!--            border: 1px solid #000;-->
+<!--            margin: 10px auto;-->
+<!--            padding: 60px;-->
+<!--        }-->
+<!--    </style>-->
 </head>
 <body>
 <!--<div th:insert="/fragments/menu :: menu">-->
@@ -42,15 +42,15 @@
     </table>
 </div>
 <p/>
-<div id="tableModal" class="modal fade" role="dialog">
+<div id="tableModal" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
 <div class="modal-dialog">
 
     <!-- Content-->
     <div class="modal-content ">
-        <div class="modal-header ">
-            <h4 class="modal-title">New Table</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
+<!--        <div class="modal-header ">-->
+<!--&lt;!&ndash;            <h4 class="modal-title">New Table</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="button" class="close" data-dismiss="modal">&times;</button>&ndash;&gt;-->
+<!--        </div>-->
 
         <div class="modal-body">
 
@@ -68,11 +68,11 @@
                 </div>
                 <div class="form-group">
                     <label for="mergeable">Mergeable:</label>
-                    <input type="text" class="form-control" id="mergeable">
+                    <input type="text" class="form-control" autocomplete="off" id="mergeable">
                 </div>
                 <div class="form-group">
                     <label for="available">Available:</label>
-                    <input type="text" class="form-control" id="available">
+                    <input type="text" class="form-control" autocomplete="off" id="available">
                 </div>
 
                 <div class="form-group">
@@ -87,7 +87,8 @@
 </div>
 </div>
 
-<div class="roww col-md-112">
+<div class="row" id="mainContent">
+    <div class="col-md-12" style="display: flex; justify-content: center;">
      <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="newTableButton">New Table</button>
         <span style="margin: 0 10px;"></span>
         <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="editTableButton">Edit Table</button>
@@ -96,14 +97,14 @@
     </div>
 </div>
 
-<div id="tableDeleteModal" class="modal fade" role="dialog">
+<div id="tableDeleteModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
 
         <!-- Content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Delete Table</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
             </div>
 
             <div class="modal-body">
@@ -111,7 +112,7 @@
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" id="deleteTableConfirmButton" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                <button type="button" class="btn btn-secondary room-close-button" data-dismiss="modal">Cancel</button>
+                <button type="button" id="closeButtonCancel" class="btn btn-secondary room-close-button" data-dismiss="modal">Cancel</button>
 
             </div>
 
@@ -120,7 +121,7 @@
     </div>
 </div>
 <br>
-<footer style="height: 85px; background-color: #0f172b; position: static; bottom: 0; left: 0; width: 100%;"></footer>
+<!--<footer style="height: 85px; background-color: #0f172b; position: static; bottom: 0; left: 0; width: 100%;"></footer>-->
 <!-- Footer içeriği -->
 <!--</footer>-->
 <!--<div th:insert="/fragments/footer :: footer">-->

@@ -74,7 +74,7 @@ public class TableController {
         // Endpoint
     // http://localhost:8080/api/reservation/2
     // DEL
-    @DeleteMapping("tables/{id}")
+    @DeleteMapping("table/{id}")
     public ResponseEntity<Void> deleteTableById( @PathVariable long id){
 
         tableService.deleteById(id);
