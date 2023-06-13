@@ -5,7 +5,9 @@ function init(){
 
     $("#newReservationButton").click( function () {
         console.log("Inside click of newReservationButton");
+        $("#mainContent").hide();
         $('#reservationsModal').modal('show');
+
     });
 
     $("#editReservationButton").click( function () {
@@ -15,29 +17,22 @@ function init(){
             if (reservationsTable.row($('.selected')).data() == undefined) {
                 alert("Select reservations first");
             }else{
-                var reservations = reservationsTable.row($('.selected')).data();
+                var reservation = reservationsTable.row($('.selected')).data();
                 //alert(customer.id);
-//                $("#id").val(reservation.reservationId);
-//                $("#id2").val(reservation.customer.customerId);
-                $("#firstName").val(reservations.customer.firstName);
-                $("#lastName").val(reservations.customer.lastName);
-                $("#phoneNumber").val(reservations.customer.phoneNumber);
-//                $("#email").val(reservation.customer.email);
-//                $("#adress").val(reservation.customer.adress);
-//                $("#guest").val(reservation.customer.guest);
-//
-//                $("#id3").val(reservation.table.tableId);
-//                $("#tableNumber").val(reservation.table.tableNumber);
-//                $("#seat").val(reservation.table.seat);
-//                $("#mergeable").val(reservation.table.mergeable);
-//                $("#avaible").val(reservation.table.available);
-//
-                $("#date").val(reservations.date);
-                $("#time").val(reservations.time);
-//
-//                $("#addBabyChair").val(reservation.addBabyChair);
-
+                $("#id").val(reservation.reservationId);
+//                $("#customerId").val(reservation.customer.customerId);
+                $("#fullName").val(reservation.fullName);
+//                $("#lastName").val(reservation.customer.lastName);
+                $("#phoneNumber").val(reservation.phoneNumber);
+                $("#email").val(reservation.email);
+                $("#numberOfPeople").val(reservation.numberOfPeople);
+                $("#date").val(reservation.date);
+                $("#time").val(reservation.time);
+                $("#roomNumber").val(reservation.roomNumber);
+                $("#addBabyChair").val(reservation.addBabyChair);
+                $("#mainContent").hide();
                 $('#reservationsModal').modal('show');
+
             }
 
         });
@@ -46,19 +41,51 @@ function init(){
         console.log("Inside click of deleteReservationButton");
 
         if (reservationsTable.row($('.selected')).data() == undefined) {
-            alert("Select reservations first");
+            alert("Select reservation first");
         }else{
+            $("#mainContent").hide();
             $('#reservationDeleteModal').modal('show');
+
         }
-
     });
+    $("#closeButton").click(function() {
+        $('#reservationsModal').modal('hide');
 
+        // Show the main content
+        $("#mainContent").show();
+    });
+        $("#closeButtonCancel").click(function() {
+            $('#reservationsModal').modal('hide');
+
+            // Show the main content
+            $("#mainContent").show();
+        });
     // Button in modal
-    $("#deleteReservationConfirmButton").click( function () {
-        console.log("Inside click of deleteReservationConfirmButton");
-        deleteReservation();
-        $('#reservationDeleteModal').modal('hide');
-    });
+//    $("#deleteReservationConfirmButton").click( function () {
+//        $("#mainContent").modal('show');
+//        console.log("Inside click of deleteReservationConfirmButton");
+//        deleteReservation();
+//        $('#reservationDeleteModal').modal('hide');
+//
+//    });
+$("#deleteReservationConfirmButton").click(function() {
+    console.log("Inside click of deleteReservationConfirmButton");
+    deleteReservation();
+    $('#reservationDeleteModal').modal('hide');
+
+    // Show a loading overlay on the main content
+    var loadingOverlay = $('<div class="loading-overlay"></div>');
+    $("#mainContent").append(loadingOverlay);
+
+    // Wait for a short duration before showing the main content again
+    setTimeout(function() {
+        loadingOverlay.remove();
+        $("#mainContent").modal('show');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+    }); // Adjust the delay as needed
+});
+
 
     // Add submit event to form for new and edit
     $("#reservationForm").on('submit', function() {
@@ -68,56 +95,49 @@ function init(){
     });
 
     initReservationsTable();
-    // Get customers from backend and and update stock
-    getReservationsData();
+    // Get reservations from backend and and update reservation
+    getReservationsData();closeButton
+
 }
 function initReservationsTable() {
 
-    console.log('inside initStockTable' );
+    console.log('inside initReservationsTable' );
 
-    // Create columns (with titles) for datatable: id, name, recentAmount, minAmount
+    // Create columns (with titles) for datatable: reservationId, customerId, firstName, lastName...
     columns = [
-        { "title":  "Reservation ID",//@todo
+        { "title":  "Reservation ID",
             "data": "reservationId" ,
             "visible": false },
-        { "title":  "First Name",
-            "data": "customer.firstName" },
-        { "title":  "Last Name",
-            "data": "customer.lastName" },
+        { "title":  "Name",
+            "data": "fullName" },
+//        { "title":  "Last Name",
+//            "data": "customer.lastName" },
         { "title":  "Phone Number",
-            "data": "customer.phoneNumber" },
+            "data": "phoneNumber" },
         { "title":  "E-mail",
-           "data": "customer.email" },
-        { "title":  "Address",
-           "data": "customer.address" },
+           "data": "email" },
+//        { "title":  "Address",
+//           "data": "customer.address" },
+        { "title":  "Number Of People",
+            "data": "numberOfPeople" },
         { "title":  "Date",
             "data": "date" },
         { "title":  "Time",
             "data": "time" },
+        { "title":  "Room Number",
+            "data": "roomNumber" },
+            { "title":  "Table Number",
+                        "data": "table[,].tableNumber"},
         { "title":  "BabyChair",
-            "data": "addBabyChair" }
-
-//        { "title":  "RecentAmount",
-//            "data": "recentAmount" },
-//        { "title": "MinAmount",
-//            "data": "minAmount"}
-//            "render": function(mergeable) {
-//            console.log(mergeable);
-//                 if (mergeable == true) {
-//                          return "Yes"
-//                            } else {
-//                                return "No"
-//                            }
-//                        }},
-//        { "title": "Available",
-//            "data": "available",
-//              "render": function(available) {
-//                                        if (available == true) {
-//                                            return "Yes"
-//                                        } else {
-//                                            return "No"
-//                                        }
-//                                    }}
+            "data": "addBabyChair",
+            "render": function(addBabyChair) {
+            console.log(addBabyChair);
+                if (addBabyChair == true) {
+                        return "Yes"
+                           } else {
+                              return "No"
+                                }
+                           }}
     ];
 
     // Define new table with above columns
@@ -154,7 +174,7 @@ function getReservationsData(){
         // success: function(customers, textStatus, jqXHR){
         success: function(reservations){
 
- //           console.log('Data: ' + customers );
+            console.log('Data: ' +reservations );
 
             if (reservations) {
                 reservationsTable.clear();
@@ -170,87 +190,111 @@ function getReservationsData(){
     });
 
 }
-//function createReservations(){
-//
-//    console.log('inside createReservations' );
-//
-//    // Put customer data from page in Javascript object --- SIMILAR TO JSON
-//    var reservationsData = {
-//            reservationsId: $("#id").val(),
-//            reservations.customerId: $("#id2").val(),
-//            firstName: $("#name").val(),
-//            recentAmount: $("#recentAmount").val(),
-//            minAmount: $("#minAmount").val()
-//    }
-//
-//    // Transform Javascript object to json
-//    var stockJson = JSON.stringify(stockData);
-//
-//    console.log(stockJson);
-//
-//    $.ajax({
-//        url: api,
-//        type: "post",
-//        data: stockJson,    // json for request body
-//        contentType:"application/json; charset=utf-8",   // What we send to frontend
-//        dataType: "json",  // get back from frontend
-//        // success: function(customer, textStatus, jqXHR){
-//        success: function(stock){
-//
-//          console.log(stock);
-//
-//          // Clear fields in page
-//          $("#id").val('');
-//          $("#name").val('');
-//          $("#recentAmount").val('');
-//          $("#minAmount").val('');
-//
-//          // Refresh stock data
-//          getStockData();
-//
-//        },
-//
-//        fail: function (error) {
-//          console.log('Error: ' + error);
-//        }
-//
-//    });
-//
-//}
+function createReservation(){
 
-//function deleteStock(){
-//
-//    if (stockTable.row($('.selected')).data() == undefined) {
-//        alert("Select stock first");
-//    }else{
-//        var stock = stockTable.row($('.selected')).data();
-//
-//        console.log(api + '/' + stock.stockId);
-//
-//            $.ajax({
-//                url: api + '/' + stock.stockId,
-//                type: "delete",
-//                contentType: "application/json",
-//                dataType: "text",  // get back from frontend
-//                // success: function(customer, textStatus, jqXHR){
-//                success: function(message){
-//
-//                  console.log(message);
-//
-//                  // Refresh table data
-//                  getStockData();
-//
-//                },
-//
-//                fail: function (error) {
-//                  console.log('Error: ' + error);
-//                }
-//
-//            });
-//
-//
-//
-//    }
-//
-//
-//}
+    console.log('inside createReservation' );
+
+    // Put customer data from page in Javascript object --- SIMILAR TO JSON
+    var reservationsData = {
+            reservationId: $("#id").val(),
+//            customer: {
+//                customerId: $("#customerId").val(),
+//                firstName: $("#firstName").val(),
+//                lastName: $("#lastName").val(),
+//                phoneNumber: $("#phoneNumber").val(),
+//                email: $("#email").val(),
+//                address: $("#address").val(),
+//            },
+            restaurantTables:{
+            tableId: $("#tableId").val(),
+            seat: $("#seat").val(),
+            },
+            fullName: $("#fullName").val(),
+            phoneNumber: $("#phoneNumber").val(),
+            email: $("#email").val(),
+            numberOfPeople: $("#numberOfPeople").val(),
+            roomNumber: $("#roomNumber").val(),
+            date: $("#date").val(),
+            time: $("#time").val(),
+            addBabyChair: $("#addBabyChair").val()
+    }
+
+    // Transform Javascript object to json
+    var reservationsJson = JSON.stringify(reservationsData);
+
+    console.log(reservationsJson);
+
+    $.ajax({
+        url: api,
+        type: "post",
+        data: reservationsJson,    // json for request body
+        contentType:"application/json; charset=utf-8",   // What we send to frontend
+        dataType: "json",  // get back from frontend
+        // success: function(customer, textStatus, jqXHR){
+        success: function(reservations){
+
+          console.log(reservations);
+
+          // Clear fields in page
+          $("#id").val('');
+          $("#fullName").val('');
+//          $("#lastName").val('');
+          $("#phoneNumber").val('');
+          $("#email").val('');
+          $("#numberOfPeople").val('');
+          $("#date").val('');
+          $("#time").val('');
+          $("#roomNumber").val('');
+          $("#addBabyChair").val('');
+          $("#seat").val('');
+
+          // Refresh stock data
+          getReservationsData();
+
+
+        },
+
+        fail: function (error) {
+          console.log('Error: ' + error);
+        }
+
+    });
+
+}
+
+function deleteReservation(){
+
+    if (reservationsTable.row($('.selected')).data() == undefined) {
+        alert("Select stock first");
+    }else{
+        var reservations = reservationsTable.row($('.selected')).data();
+
+        console.log(api + '/' + reservations.reservationId);
+
+            $.ajax({
+                url: api + '/' + reservations.reservationId,
+                type: "delete",
+                contentType: "application/json",
+                dataType: "text",  // get back from frontend
+                // success: function(customer, textStatus, jqXHR){
+                success: function(message){
+
+                  console.log(message);
+
+                  // Refresh table data
+                  getReservationsData();
+
+                },
+
+                fail: function (error) {
+                  console.log('Error: ' + error);
+                }
+
+            });
+
+
+
+    }
+
+
+}

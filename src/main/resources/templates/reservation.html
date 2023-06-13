@@ -80,15 +80,15 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name" >
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" required autocomplete="off">
                                 <label for="name" style="font-family: Cambria;">*Full Name</label>
 
                             </div>
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-floating">
-                                <input type="text" class="form-control datetimepicker-input" id="People"
-                                       placeholder="No Of People"   autocomplete="off">
+                                <input type="text" class="form-control datetimepicker-input" required id="People"
+                                       placeholder="No Of People" autocomplete="off">
                                 <label style="font-family: Cambria;">*Number of People</label>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                         <div class="col-md-12">
                             <div class="form-floating date" id="date4">
                                 <input class="form-control datetimepicker-input" type="text" id="myDateInput"
-                                       name="myDateInput"  placeholder="Date"
+                                       name="myDateInput"  placeholder="Date" required autocomplete="off"
                                        />
                                 <label  style="font-family: Cambria;">*Date</label>
                             </div>
@@ -129,7 +129,7 @@
                             <div
                                     class="pt-3 form-floating form-control bg-white  justify-content-center form-group ">
                                 <input class="form-control" style="font-family: Cambria;" placeholder="*Phone Number"
-                                       data-toggle="datetimepicker" type="tel" id="phone" pattern="\d{12}"
+                                       data-toggle="datetimepicker" type="tel" id="phone" pattern="\d{12}" autocomplete="off" required
                                        >
                             </div>
                         </div>
@@ -137,7 +137,7 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control"  id="email1" placeholder="Your Email" >
+                                <input type="email" class="form-control"  required autocomplete="off" id="email1" placeholder="Your Email" >
                                 <label style="font-family: Cambria;">*E-mail</label>
                             </div>
                         </div>
@@ -148,14 +148,14 @@
                                     <option value="Yes" style="font-family: Cambria;">Yes</option>
                                     <option selected value="No" style="font-family: Cambria;">No</option>
                                 </select>
-                                <label for="select1" style="font-family: Cambria;">Hotel guest</label>
+                                <label for="select1" style="font-family: Cambria;" required >Hotel guest</label>
                             </div>
                         </div>
                         <!--                            -->
                         <div class="col-md-6" id="roomNumberContainer" style="display: none;">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="roomNumber" placeholder="Room Number" autocomplete="off">
-                                <label for="roomNumber" style="font-family: Cambria;">*Room Number</label>
+                                <label for="roomNumber" style="font-family: Cambria;" required autocomplete="off" >*Room Number</label>
                             </div>
                         </div>
                         <!--                            -->

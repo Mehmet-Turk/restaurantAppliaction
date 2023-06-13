@@ -4,6 +4,7 @@ function init(){
     console.log('inside init' );
     $("#newTableButton").click( function () {
         console.log("Inside click of newTableButton");
+        $("#mainContent").hide();
         $('#tableModal').modal('show');
     });
 
@@ -21,29 +22,48 @@ function init(){
             $("#seat").val(table.seat);
             $("#mergeable").val(table.mergeable);
             $("#available").val(table.available);
-
+            $("#mainContent").hide();
             $('#tableModal').modal('show');
         }
 
     });
 
-    $("#deleteTableButton").click( function () {
+    $("#deleteTableButton").click(function() {
         console.log("Inside click of deleteTableButton");
 
         if (tableTable.row($('.selected')).data() == undefined) {
             alert("Select table first");
-        }else{
+        } else {
+            $("#mainContent").hide();
             $('#tableDeleteModal').modal('show');
         }
+    });
 
+    $("#closeButton").click(function() {
+        $('#tableModal').modal('hide');
+
+        // Show the main content
+        $("#mainContent").show();
+    });
+
+    $("#closeButtonCancel").click(function() {
+        $('#tableModal').modal('hide');
+
+        // Show the main content
+        $("#mainContent").show();
     });
 
     // Button in modal
-    $("#deleteTableConfirmButton").click( function () {
+    $("#deleteTableConfirmButton").click(function() {
         console.log("Inside click of deleteTableConfirmButton");
         deleteTable();
         $('#tableDeleteModal').modal('hide');
+
+        // Show the main content
+        $("#mainContent").show();
     });
+
+
 
     // Add submit event to form for new and edit
     $("#tableForm").on('submit', function() {
@@ -198,6 +218,7 @@ function deleteTable(){
 
             $.ajax({
                 url: api + '/' + table.tableId,
+                type: "delete",
                 contentType: "application/json",
                 dataType: "text",  // get back from frontend
                 // success: function(customer, textStatus, jqXHR){

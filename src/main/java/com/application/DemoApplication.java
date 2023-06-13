@@ -78,15 +78,15 @@ public class DemoApplication implements CommandLineRunner {
 //		restaurantTablesRepository.save(table);
 //		table = new RestaurantTables(101, 6, true, true);
 //		restaurantTablesRepository.save(table);
-		List<RestaurantTables> res1 = new ArrayList<>();
-		res1.add(loadedTables.get(0));
-		res1.add(loadedTables.get(2));
+//		List<RestaurantTables> res1 = new ArrayList<>();
+//		res1.add(loadedTables.get(0));
+//		res1.add(loadedTables.get(2));
 //		Reservation reservation;
 //		reservation = new Reservation(customer, res1 , LocalDate.of(2023,2,2), LocalTime.MIDNIGHT,false );
 //		reservationRepository.save(reservation);
-		Reservation reservation;
-		reservation = new Reservation(res1, LocalDate.now(), LocalTime.MIDNIGHT, false, "ALi", 4, "234423", "rer", "321");
-		reservationRepository.save(reservation);
+//		Reservation reservation;
+//		reservation = new Reservation(res1, LocalDate.now(), LocalTime.MIDNIGHT, false, "ALi", 4, "234423", "rer", "321");
+//		reservationRepository.save(reservation);
 
 	}
 	public void LoadTables(){

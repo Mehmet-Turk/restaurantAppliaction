@@ -6,6 +6,7 @@ function init(){
 
     $("#newStockButton").click( function () {
         console.log("Inside click of newStockButton");
+        $("#mainContent").hide();
         $('#stockModal').modal('show');
     });
 
@@ -22,28 +23,45 @@ function init(){
                 $("#name").val(stock.name);
                 $("#recentAmount").val(stock.recentAmount);
                 $("#minAmount").val(stock.minAmount);
-
+                $("#mainContent").hide();
                 $('#stockModal').modal('show');
             }
 
         });
 
-    $("#deleteStockButton").click( function () {
+    $("#deleteStockButton").click(function() {
         console.log("Inside click of deleteStockButton");
 
         if (stockTable.row($('.selected')).data() == undefined) {
             alert("Select stock first");
-        }else{
+        } else {
+            $("#mainContent").hide();
             $('#stockDeleteModal').modal('show');
         }
+    });
 
+    $("#closeButton").click(function() {
+        $('#stockModal').modal('hide');
+
+        // Show the main content
+        $("#mainContent").show();
+    });
+
+    $("#closeButtonCancel").click(function() {
+        $('#stockModal').modal('hide');
+
+        // Show the main content
+        $("#mainContent").show();
     });
 
     // Button in modal
-    $("#deleteStockConfirmButton").click( function () {
+    $("#deleteStockConfirmButton").click(function() {
         console.log("Inside click of deleteStockConfirmButton");
         deleteStock();
         $('#stockDeleteModal').modal('hide');
+
+        // Show the main content
+        $("#mainContent").show();
     });
 
     // Add submit event to form for new and edit

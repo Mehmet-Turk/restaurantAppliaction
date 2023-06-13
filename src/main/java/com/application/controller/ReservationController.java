@@ -1,10 +1,14 @@
 package com.application.controller;
 
 import com.application.model.Reservation;
+import com.application.model.RestaurantTables;
 import com.application.service.ReservationService;
+import com.application.service.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -13,12 +17,16 @@ public class ReservationController {
     @Autowired
     ReservationService reservationService;
 
+
+
     // Endpoint
     // http://localhost:8080/api/reservation
     // POST
     @PostMapping(value = "/reservation", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Reservation> createReservation(@RequestBody Reservation reservation) {
-
+        // Gelen JSON verisinden table bilgisini alıp rezervasyon nesnesine ekleyebilirsiniz
+//        List<RestaurantTables> table = reservation.getTable(); // Gelen table bilgisini alın
+//        reservation.setTable(table); // Rezervasyon nesnesine table bilgisini ekleyin
         return ResponseEntity.ok().body(reservationService.save(reservation));
 
     }
