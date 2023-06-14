@@ -98,16 +98,17 @@ function initTableTable() {
                             } else {
                                 return "No"
                             }
-                        }},
-        { "title": "Available",
-            "data": "available",
-              "render": function(available) {
-                                        if (available == true) {
-                                            return "Yes"
-                                        } else {
-                                            return "No"
-                                        }
-                                    }}
+                        }}
+//                        ,
+//                                { "title": "Available",
+//                                    "data": "available",
+//                                      "render": function(available) {
+//                                                                if (available == true) {
+//                                                                    return "Yes"
+//                                                                } else {
+//                                                                    return "No"
+//                                                                }
+//                                                            }}
     ];
 
     // Define new table with above columns

@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:replace="fragments/head :: head"></head>
 <body>
 
     <header th:fragment="header">
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark px-4 px-lg-5 py-3 py-lg-0" style="background-color: #0f172b;">
-                <a th:href="@{/reservations}" class="navbar-brand p-0">
+                <a th:href="@{/dashboard}" class="navbar-brand p-0">
                     <!-- <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1> -->
                     <img src="img/Company_Logo-removebg-preview.png" alt="Logo" class=""  >
                     <span class=" text-white animated slideInLeft text-darck cambria" style="text-transform: uppercase;">Molveno lake Resort China</span>
                 </a>
+
 <!--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">-->
 <!--                    <span class="fa fa-bars"></span>-->
 <!--                </button>-->
-                <div class="collapse navbar-collapse"  id="navbarCollapse" style="margin-left:220px;">
+                <div class="collapse navbar-collapse justify-content-end"  id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
 <!--                        <a th:href="@{/}" class="nav-item nav-link active">Home</a>-->
 <!--                        <a th:href="@{/menu}" class="nav-item nav-link">Menu</a>-->
-                        <a th:href="@{/reservations}" class="nav-item nav-link cambria">Reservations</a>
-                        <a th:href="@{/table}" class="nav-item nav-link cambria">Tables</a>
-                        <a th:href="@{/stock}" class="nav-item nav-link cambria">Stocks</a>
-                        <a th:href="@{/orders}" class="nav-item nav-link cambria">Orders</a>
-                        <a th:href="@{/login}" class="nav-item nav-link cambria">Logout</a>
+                        <a sec:authorize ="hasAnyRole('GM')" th:href="@{/reservations}" class="nav-item nav-link cambria">Reservations</a>
+                        <a sec:authorize ="hasAnyRole('GM')" th:href="@{/table}" class="nav-item nav-link cambria">Tables</a>
+                        <a sec:authorize ="hasAnyRole('GM', 'CHEF')" th:href="@{/stock}" class="nav-item nav-link cambria">Stocks</a>
+                        <a sec:authorize ="hasAnyRole('GM', 'CHEF')" th:href="@{/orders}" class="nav-item nav-link cambria">Orders</a>
+                        <a sec:authorize ="!isAuthenticated()" th:href="@{/login}" class="nav-item nav-link cambria">Login</a>
+                        <a sec:authorize ="isAuthenticated()" th:href="@{/logout}" class="nav-item nav-link cambria">Logout</a>
 
 <!--                        <a th:href="@{/contact}" class="nav-item nav-link">Contact</a>-->
                     </div>

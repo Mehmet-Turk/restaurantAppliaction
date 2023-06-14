@@ -29,13 +29,13 @@ public class Controller {
     }
 
     // http://localhost:8080/stocks
-    @GetMapping("/stocks")
-    public String stocksPage() {
-
-        System.out.println("Inside stockPage");
-
-        return "stocks";
-    }
+//    @GetMapping("/stock")
+//    public String stocksPage() {
+//
+//        System.out.println("Inside stockPage");
+//
+//        return "stock";
+//    }
 
 
     // http://localhost:8080/menu
@@ -97,5 +97,9 @@ public class Controller {
     @GetMapping("/reservationDetails")
     public String reservationDetailsPage(){
         return "reservationDetails";
+    }
+    @GetMapping("/dashboard")
+    public String dashboardPage(){
+        return "dashboard";
     }
 }
