@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <title>Restaurant</title>
-    <meta th:include="fragments/head1 :: metas" th:remove="tag"/>
+    <meta th:include="fragments/head1 :: metas" th:remove="tag" />
+    <script src="/js/forgot.js"></script>
 
     <!-- Favicon -->
     <link href="img/Company_Logo-removebg-preview.png" rel="icon">
@@ -10,9 +13,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
-            rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -21,7 +22,7 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"/>
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -31,11 +32,9 @@
     <!-- Phone  -->
     <!-- Test -->
 
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.min.js"></script>
 
@@ -44,44 +43,38 @@
 
     <div th:insert="/fragments/headerForStock    :: header">
     </div>
-</head>
+
+    </head>
 
 <body>
-
-
 <!-- Login Start -->
 <div class="container-xxl px-0 wow fadeInUp" data-wow-delay="0.1s" id="login">
     <div class="row g-0">
         <div class="col-md-6 bg-dark d-flex align-items-center">
             <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
-                <h5 class="section-title ff-secondary text-start text-primary fw-normal">*Login</h5>
+<!--                <h5 class="section-title ff-secondary text-start text-primary fw-normal">Forgot Password</h5>-->
                 <h1 class="text-white mb-4 cambria">Welcome !</h1>
-                <p th:if="${loginError}" class="error">Wrong user or password</p>
-                <form th:action="@{/login}" method="post">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Your Email" required autocomplete="off">
-                                <label for="username" class="cambria">*E-mail</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="password" name="password"
-                                       placeholder="Your Password">
-                                <label for="password" class="cambria">*Password</label>
-                            </div>
-                        </div>
+                <div class="text-white" sec:authorize="isAuthenticated()">
+                    <p><b sec:authentication="principal" th:text="${#authentication.name}"></b>!</p>
+                </div>
 
+                <div class="text-white"sec:authorize="!isAuthenticated()">
+                    <p>Please log in to access this page.</p>
+                </div>
+<!--                <form id="resetForm">-->
+<!--                    <div class="row g-3">-->
+<!--                        <div class="col-12">-->
+<!--                            <div class="form-floating">-->
+<!--                                <input type="email" class="form-control" id="email" placeholder="Your Email" required autocomplete="off">-->
+<!--                                 <label for="email" class="cambria">*E-mail</label>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3 cambria" type="submit">Login</button>
-                        </div>
-                        <span class="forgot-password">
-                          <a th:href="@{/forgot}" title="Forgot Password" id="link-reset" class="cambria">Forgot Password?</a>
-                        </span>
-                    </div>
-                </form>
+<!--                        <div class="col-12">-->
+<!--                            <button class="btn btn-primary w-100 py-3 cambria" type="submit" onclick="validateForm(event)">Reset Password</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
             </div>
         </div>
         <div class="col-md-6">
@@ -96,7 +89,6 @@
 <!-- Footer Start -->
 <div th:insert="/fragments/footer :: footer">
     <!-- Footer End -->
-
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -120,11 +112,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- DateTimePicker plugin -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 
 </body>
 

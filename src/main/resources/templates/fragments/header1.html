@@ -3,36 +3,77 @@
 <head th:replace="fragments/head :: head"></head>
 <body>
 
-    <header th:fragment="header">
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a th:href="@{/}" class="navbar-brand p-0">
-                    <!-- <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1> -->
-                    <img src="img/Company_Logo-removebg-preview.png" alt="Logo" class=""  >
-<!--                    <span class=" text-white animated slideInLeft text-darck" style="text-transform: uppercase;">Molveno lake Resort China</span>-->
-                    <span class="text-white animated slideInLeft text-darck" style="text-transform: uppercase; font-family: Cambria;">Molveno lake Resort China</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="login.htmllogin.html">
-                    <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a th:href="@{/}" class="nav-item nav-link cambria ">Home</a>
+<header th:fragment="header">
+    <div class="container-xxl position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+            <a th:href="@{/}" class="navbar-brand p-0">
+                <!-- <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1> -->
+                <img src="img/Company_Logo-removebg-preview.png" alt="Logo" class="">
+                <!--                    <span class=" text-white animated slideInLeft text-darck" style="text-transform: uppercase;">Molveno lake Resort China</span>-->
+                <span class="text-white animated slideInLeft text-darck"
+                      style="text-transform: uppercase; font-family: Cambria;">Molveno lake Resort China</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="login.htmllogin.html">
+                <div class="navbar-nav ms-auto py-0 pe-4">
+                    <a th:href="@{/}" class="nav-item nav-link cambria ">Home</a>
 
-                        <a th:href="@{/menu}" class="nav-item nav-link cambria">Menu</a>
-                        <!-- <a href="#" class="nav-item nav-link">Order</a> -->
-                        <a th:href="@{/about}" class="nav-item nav-link cambria">About</a>
-                        <a th:href="@{/contact}" class="nav-item nav-link cambria">Contact</a>
+<!--                    <a th:href="@{/menu}" class="nav-item nav-link cambria" onclick="hideElements()">Menu</a>-->
+<!--                    <script>-->
+<!--                            function hideElements() {-->
+<!--  var elements = document.querySelectorAll(".d-flex align-items-center text-start mx-3 ms-0 pb-3 active");-->
 
-                        <a th:href="@{/login}" class="nav-item nav-link cambria">Login</a>
-                    </div>
-                    <a th:href="@{/reservation}" class="btn btn-primary py-2 px-4 cambria">Book A Table</a>
+<!--  for (var i = 0; i < elements.length; i++) {-->
+<!--    elements[i].style.display = "none";-->
+<!--  }-->
+<!--}-->
+                    <a th:href="@{/menu}" class="nav-item nav-link cambria" onclick="hideElements()">Menu</a>
+
+                    <script>
+function hideElements() {
+  var elements = document.querySelectorAll(".input-group.ml-3, .btn.btn-primary.cambria.border");
+
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.display = "none";
+  }
+
+  // Gizlenen elemanların durumunu kaydetmek için localStorage kullanımı
+  localStorage.setItem("elementsHidden", "true");
+}
+
+// Sayfa yüklendiğinde gizlenen elemanların durumunu kontrol etme
+window.onload = function() {
+  var elementsHidden = localStorage.getItem("elementsHidden");
+  if (elementsHidden === "true") {
+    var elements = document.querySelectorAll(".input-group.ml-3, .btn.btn-primary.cambria.border");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+
+
+
+
+
+                    </script>
+                    <!-- <a href="#" class="nav-item nav-link">Order</a> -->
+                    <a th:href="@{/about}" class="nav-item nav-link cambria">About</a>
+                    <a th:href="@{/contact}" class="nav-item nav-link cambria">Contact</a>
+
+                    <a th:href="@{/login}" class="nav-item nav-link cambria">Login</a>
                 </div>
-            </nav>
+                <a th:href="@{/reservation}" class="btn btn-primary py-2 px-4 cambria">Book A Table</a>
+            </div>
+        </nav>
 
 
-        </div>
-    </header>
+    </div>
+</header>
 
 </body>
 </html>
