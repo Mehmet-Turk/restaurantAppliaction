@@ -184,6 +184,7 @@ function createStock(){
         dataType: "json",  // get back from frontend
         // success: function(customer, textStatus, jqXHR){
         success: function(stock){
+        alert("Stock is created");
 
           console.log(stock);
 
@@ -222,6 +223,7 @@ function deleteStock(){
                 dataType: "text",  // get back from frontend
                 // success: function(customer, textStatus, jqXHR){
                 success: function(message){
+                alert("Stock is deleted");
 
                   console.log(message);
 

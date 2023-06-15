@@ -232,6 +232,7 @@ function createReservation(){
         dataType: "json",  // get back from frontend
         // success: function(customer, textStatus, jqXHR){
         success: function(reservations){
+        alert("Reservation is created");
 
           console.log(reservations);
 
@@ -278,6 +279,7 @@ function deleteReservation(){
                 dataType: "text",  // get back from frontend
                 // success: function(customer, textStatus, jqXHR){
                 success: function(message){
+                alert("Reservation is deleted");
 
                   console.log(message);
 

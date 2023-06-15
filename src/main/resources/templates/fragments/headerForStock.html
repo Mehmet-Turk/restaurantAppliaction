@@ -24,6 +24,7 @@
                         <a sec:authorize ="hasAnyRole('GM')" th:href="@{/table}" class="nav-item nav-link cambria">Tables</a>
                         <a sec:authorize ="hasAnyRole('GM', 'CHEF')" th:href="@{/stock}" class="nav-item nav-link cambria">Stocks</a>
                         <a sec:authorize ="hasAnyRole('GM', 'CHEF')" th:href="@{/orders}" class="nav-item nav-link cambria">Orders</a>
+                        <a sec:authorize ="hasAnyRole('GM', 'CHEF')" th:href="@{/menuItems}" class="nav-item nav-link cambria">MenuItems</a>
                         <a sec:authorize ="!isAuthenticated()" th:href="@{/login}" class="nav-item nav-link cambria">Login</a>
                         <a sec:authorize ="isAuthenticated()" th:href="@{/logout}" class="nav-item nav-link cambria">Logout</a>
 
