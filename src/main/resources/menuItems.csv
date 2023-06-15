@@ -1,0 +1,23 @@
+Item Name,Type,Ingredients,Price,Is Alcoholic
+Pancakes,Breakfast,All-purpose flour - milk - eggs - vanilla extract,5.99,false
+Baked Eggs,Breakfast,Eggs - cheese - spinach - tomatoes - salt - pepper,8.99,false
+Omelette,Breakfast,Eggs - cheese - vegetables - ham,7.99,false
+French Toast,Breakfast,Bread - eggs - milk - cinnamon,5.99,false
+Cobb Salad,Salad,Romaine lettuce - croutons - Parmesan cheese - Caesar dressing,9.99,false
+Greek Salad,Salad,Mixed greens - tomatoes - cucumbers - feta cheese - olives,8.99,false
+Caprese Salad,Salad,Tomatoes - mozzarella cheese - fresh basil - balsamic glaze,10.99,false
+Cobb Salad,Salad,Mixed greens - grilled chicken - avocado - bacon - eggs,11.99,false
+Spinach Salad,Salad,Baby spinach - strawberries - feta cheese - almonds - balsamic vinaigrette,9.99,false
+Quinoa Salad,Salad,Quinoa - mixed vegetables - feta cheese - lemon vinaigrette,10.99,false
+Chocolate Cake,Dessert,Flour - sugar - cocoa powder - eggs - butter,14.99,false
+Cheesecake,Dessert,Graham cracker crust - cream cheese - sugar - eggs - vanilla extract,12.99,false
+Apple Pie,Dessert,Apples - sugar - cinnamon - butter - pie crust,10.99,false
+Chocolate Brownie,Dessert,Flour - sugar - cocoa powder - eggs - butter - walnuts,8.99,false
+Tiramisu,Dessert,Ladyfingers - mascarpone cheese - espresso - cocoa powder,12.99,true
+Strawberry Shortcake,Dessert,Strawberries - cake - whipped cream - sugar,8.99,false
+Coca-Cola,Drink,Carbonated water - sugar - phosphoric acid - caramel color,2.99,false
+Orange Juice,Drink,Freshly squeezed oranges,3.99,false
+Iced Coffee,Drink,Cold brew coffee - milk - sugar - ice,4.99,false
+Mojito,Drink,Rum - lime juice - mint leaves - sugar - soda water,7.99,true
+Lemonade,Drink,Lemon juice - water - sugar,3.99,false
+Milkshake,Drink,Ice cream - milk - chocolate syrup - whipped cream,5.99,false

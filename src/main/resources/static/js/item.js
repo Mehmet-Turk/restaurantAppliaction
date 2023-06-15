@@ -1,5 +1,5 @@
-var api = "http://localhost:8080/api/table" ;
-var tableTable;
+var api = "http://localhost:8080/api/menu" ;
+var itemTable;
 function init(){
     console.log('inside init' );
     $("#newTableButton").click( function () {
@@ -12,16 +12,17 @@ function init(){
         console.log("Inside click of editTableButton");
         // Get the data from selected row and fill fields in modal
 
-        if (tableTable.row($('.selected')).data() == undefined) {
+        if (itemTable.row($('.selected')).data() == undefined) {
             alert("Select table first");
         }else{
-            var table = tableTable.row($('.selected')).data();
+            var menuItem = itemTable.row($('.selected')).data();
             //alert(customer.id);
-            $("#id").val(table.tableId);
-            $("#number").val(table.tableNumber);
-            $("#seat").val(table.seat);
-            $("#mergeable").val(table.mergeable);
-            $("#available").val(table.available);
+            $("#id").val(menuItem.menuItemId);
+            $("#name").val(menuItem.itemName);
+            $("#type").val(menuItem.type);
+            $("#ingredients").val(menuItem.ingredients);
+            $("#price").val(menuItem.price);
+            $("#alcoholic").val(menuItem.alcoholic);
             $("#mainContent").hide();
             $('#tableModal').modal('show');
         }
@@ -31,7 +32,7 @@ function init(){
     $("#deleteTableButton").click(function() {
         console.log("Inside click of deleteTableButton");
 
-        if (tableTable.row($('.selected')).data() == undefined) {
+        if (itemTable.row($('.selected')).data() == undefined) {
             alert("Select table first");
         } else {
             $("#mainContent").hide();
@@ -72,28 +73,32 @@ function init(){
         $('#tableModal').modal('hide');
     });
 
-    initTableTable();
+    initItemTable();
     // Get customers from backend and and update table
     getTableData();
 }
-function initTableTable() {
+function initItemTable() {
 
-    console.log('inside initTableTable' );
+    console.log('inside initItemTable' );
 
     // Create columns (with titles) for datatable: id, tableNumber, seat, mergeable, available
     columns = [
-        { "title":  "Table ID",//@todo
-            "data": "tableId" ,
+        { "title":  "ID",//@todo
+            "data": "menuItemId" ,
             "visible": false },
-        { "title":  "Number",
-            "data": "tableNumber" },
-        { "title":  "Seat",
-            "data": "seat" },
-        { "title": "Mergeable",
-            "data": "mergeable",
-            "render": function(mergeable) {
-            console.log(mergeable);
-                 if (mergeable == true) {
+        { "title":  "ItemName",
+            "data": "itemName" },
+        { "title":  "Type",
+            "data": "type" },
+         { "title":  "ingredients",
+            "data": "ingredients" },
+         { "title":  "Price",
+             "data": "price" },
+        { "title": "Alcoholic",
+            "data": "alcoholic",
+            "render": function(alcoholic) {
+            console.log(alcoholic);
+                 if (alcoholic == true) {
                           return "Yes"
                             } else {
                                 return "No"
@@ -112,20 +117,20 @@ function initTableTable() {
     ];
 
     // Define new table with above columns
-    tableTable = $("#tableTable").DataTable( {
+    itemTable = $("#itemTable").DataTable( {
         "order": [[ 0, "asc" ]],
         "columns": columns
     });
 
 
-    $("#tableTable tbody").on( 'click', 'tr', function () {
+    $("#itemTable tbody").on( 'click', 'tr', function () {
         console.log("Clicking on row");
         if ( $(this).hasClass('selected') ) {
           $(this).removeClass('selected');
           // emptyRoomModals();
         }
         else {
-            tableTable.$('tr.selected').removeClass('selected');
+            itemTable.$('tr.selected').removeClass('selected');
           // emptyRoomModals();
             $(this).addClass('selected');
         }
@@ -142,14 +147,14 @@ function getTableData(){
         type: "get",
         dataType: "json",
         // success: function(customers, textStatus, jqXHR){
-        success: function(tables){
+        success: function(items){
 
- //           console.log('Data: ' + customers );
+           console.log('Data: ' + items );
 
-            if (tables) {
-                tableTable.clear();
-                tableTable.rows.add(tables);
-                tableTable.columns.adjust().draw();
+            if (items) {
+                itemTable.clear();
+                itemTable.rows.add(items);
+                itemTable.columns.adjust().draw();
             }
         },
 
@@ -166,11 +171,12 @@ function createTable(){
 
     // Put customer data from page in Javascript object --- SIMILAR TO JSON
     var tableData = {
-            tableId: $("#id").val(),
-            tableNumber: $("#number").val(),
-            seat: $("#seat").val(),
-            mergeable: $("#mergeable").val(),
-            available: $("#available").val()
+            menuItemId: $("#id").val(),
+            itemName: $("#name").val(),
+            type: $("#type").val(),
+            ingredients: $("#ingredients").val(),
+            price: $("#price").val(),
+            alcoholic: $("#alcoholic").val()
     }
 
     // Transform Javascript object to json
@@ -185,17 +191,18 @@ function createTable(){
         contentType:"application/json; charset=utf-8",   // What we send to frontend
         dataType: "json",  // get back from frontend
         // success: function(customer, textStatus, jqXHR){
-        success: function(table){
-        alert("Table is created");
+        success: function(items){
+        alert("Item is created");
 
           console.log(table);
 
           // Clear fields in page
           $("#id").val('');
-          $("#number").val('');
-          $("#seat").val('');
-          $("#mergeable").val('');
-          $("#available").val('');
+          $("#name").val('');
+          $("#type").val('');
+          $("#ingredients").val('');
+          $("#price").val('');
+          $("#alcoholic").val('');
 
           // Refresh table data
           getTableData();
@@ -211,22 +218,21 @@ function createTable(){
 }
 function deleteTable(){
 
-    if (tableTable.row($('.selected')).data() == undefined) {
-        alert("Select table first");
+    if (itemTable.row($('.selected')).data() == undefined) {
+        alert("Select item first");
     }else{
-        var table = tableTable.row($('.selected')).data();
+        var menuItem = itemTable.row($('.selected')).data();
 
-        console.log(api + '/' + table.tableId);
+        console.log(api + '/' + menuItem.menuItemId);
 
             $.ajax({
-                url: api + '/' + table.tableId,
+                url: api + '/' + menuItem.menuItemId,
                 type: "delete",
                 contentType: "application/json",
                 dataType: "text",  // get back from frontend
                 // success: function(customer, textStatus, jqXHR){
                 success: function(message){
-                alert("Table is deleted");
-
+                   alert("Item is deleted");
                   console.log(message);
 
                   // Refresh table data

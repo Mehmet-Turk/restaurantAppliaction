@@ -28,14 +28,14 @@ public class Controller {
         return "contact";
     }
 
-    // http://localhost:8080/stocks
-//    @GetMapping("/stock")
-//    public String stocksPage() {
-//
-//        System.out.println("Inside stockPage");
-//
-//        return "stock";
-//    }
+//     http://localhost:8080/menuItems
+    @GetMapping("/menuItems")
+    public String menuItemsPage() {
+
+        System.out.println("Inside menuItems");
+
+        return "menuItems";
+    }
 
 
     // http://localhost:8080/menu

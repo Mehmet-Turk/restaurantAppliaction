@@ -18,14 +18,14 @@ public class MenuItem {
     long menuItemId;
     String itemName;
     String type;
-    String description;
+    String ingredients;
     double price;
     boolean isAlcoholic;
 
-    public MenuItem(String itemName, String type, String description, double price, boolean isAlcoholic) {
+    public MenuItem(String itemName, String type, String ingredients, double price, boolean isAlcoholic) {
         this.itemName = itemName;
         this.type = type;
-        this.description = description;
+        this.ingredients = ingredients;
         this.price = price;
         this.isAlcoholic = isAlcoholic;
     }

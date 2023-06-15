@@ -1,6 +1,7 @@
 package com.application;
 
 import com.application.model.*;
+import com.application.model.MenuItem;
 import com.application.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,8 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +33,7 @@ public class DemoApplication implements CommandLineRunner {
 	List<RestaurantTables> loadedTables = new ArrayList<>();
 
 	List<Stock> loadedStocks = new ArrayList<>();
+	List<MenuItem> loadedItems = new ArrayList<>();
 
 
 	public static void main(String[] args) {
@@ -56,6 +56,7 @@ public class DemoApplication implements CommandLineRunner {
 
 		LoadTables();
 		LoadStocks();
+		LoadMenuItems();
 		PaymentMethod paymentMethod;
 		paymentMethod = new PaymentMethod("oylesine");
 		paymentMethodRepository.save(paymentMethod);
@@ -150,6 +151,44 @@ public class DemoApplication implements CommandLineRunner {
 			stocks.add(stock);
 		}
 		loadedStocks = stocks;
+
+	}
+
+	public void LoadMenuItems(){
+		List<String[]> data = new ArrayList<>();
+		try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/menuItems.csv"))) {
+			String line;
+			int k=0;
+			while ((line = br.readLine()) != null) {
+				if (k==0){
+					k++;
+					continue;
+				}
+				String[] fields = line.split(",");
+				data.add(fields);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		MenuItem item;
+		List<MenuItem> items = new ArrayList<>();
+		for (String [] arr: data) {
+//			String itemName;
+//			String type;
+//			String description;
+//			double price;
+//			boolean isAlcoholic;
+
+			String itemName = arr[0].replaceAll(",$", "");
+			String type = arr[1].replaceAll(",$", "");
+			String ingredients = arr[2].replaceAll(",$", "");
+			double price = Double.parseDouble(arr[3].replaceAll(",$", ""));
+			boolean Alcoholic = Boolean.parseBoolean(arr[3].replaceAll(",$", ""));
+			item = new MenuItem(itemName, type, ingredients, price, Alcoholic);
+			menuItemRepository.save(item);
+			items.add(item);
+		}
+		loadedItems = items;
 
 	}
 
