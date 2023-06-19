@@ -58,7 +58,7 @@
                             <a th:href="@{/reservation}" href="#reservation"
                                 class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-3 animated slideInLeft cambria">Book A Table</a>
 
-                            <a th:href="@{/menu}" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-3 animated slideInLeft cambria" onclick="showElements()">Make An Order
+                            <a th:href="@{/menuOrder}" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-3 animated slideInLeft cambria" onclick="showElements(); filterByTime()">Make An Order
                             </a>
                             <script>
 function showElements() {
@@ -70,7 +70,38 @@ function showElements() {
 
   // Gizlenen elemanların durumunu kaydetmek için localStorage kullanımı
   localStorage.setItem("elementsHidden", "false");
+  var currentTime = new Date().getHours();
+localStorage.setItem("currentTime", currentTime);
 }
+function filterByTime() {
+  var currentTime = localStorage.getItem("currentTime"); // Get the current hour
+    var breakfastItem = document.getElementById("breakfast");
+    var lunchItem = document.getElementById("lunch");
+    var dinnerItem = document.getElementById("dinner");
+    breakfastItem.style.display = "block";
+    lunchItem.style.display = "block";
+    dinnerItem.style.display = "block";
+
+  // Define the time intervals for filtering
+  var breakfastStart = 7; // Breakfast start time
+  var breakfastEnd = 11; // Breakfast end time
+  var lunchStart = 11; // Lunch start time
+  var lunchEnd = 16; // Lunch end time
+  var dinnerStart = 16; // Dinner start time
+  var dinnerEnd = 21; // Dinner end time
+
+  // Disable the links based on the current time
+  if (currentTime < breakfastStart || currentTime >= breakfastEnd) {
+    document.getElementById("breakfast").setAttribute("disabled", "disabled");
+  }
+  if (currentTime < lunchStart || currentTime >= lunchEnd) {
+    document.getElementById("lunch").setAttribute("disabled", "disabled");
+  }
+  if (currentTime < dinnerStart || currentTime >= dinnerEnd) {
+    document.getElementById("dinner").setAttribute("disabled", "disabled");
+  }
+}
+
 </script>
 
                         </div>

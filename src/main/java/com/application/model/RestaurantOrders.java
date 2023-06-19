@@ -21,7 +21,7 @@ public class RestaurantOrders {
     long orderId;
     LocalDate date;
     LocalTime time;
-    @OneToMany
+    @ManyToMany
     private List<MenuItem> menuItem = new ArrayList<>();
     //OneToMany we should create a list in many relations.
     public RestaurantOrders(List<MenuItem> menuItem) {
