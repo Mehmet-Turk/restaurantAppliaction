@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<!--    <script src="/js/reservations.js"></script>-->
+    <script src="/js/orders.js"></script>
 <!--    This is just a template you need to create reservations js and connect it with this page. -->
     <script>
         $( document ).ready(function() {
@@ -22,13 +22,13 @@
             init();
         });
     </script>
-    <style>
-        .container {
-            border: 1px solid #000;
-            margin: 10px auto;
-            padding: 115px;
-        }
-    </style>
+<!--    <style>-->
+<!--        .container {-->
+<!--            border: 1px solid #000;-->
+<!--            margin: 10px auto;-->
+<!--            padding: 115px;-->
+<!--        }-->
+<!--    </style>-->
 </head>
 <body>
 <!--<div th:insert="/fragments/menu :: menu">-->
@@ -36,50 +36,68 @@
 <div th:insert="/fragments/headerForStock :: header">
 </div>
 <br>
-<div style="text-align: center;">
-    <h2>Coming Soon</h2>
-</div>
+<!--<div style="text-align: center;">-->
+<!--    <h2>Coming Soon</h2>-->
+<!--</div>-->
 
 <!--table container-->
 <div class="container"  style="margin-top:20px;">
     <!--  A reference to an empty table -->
-    <table id="tableTable" class="display mx-auto">
+    <table id="orderTable" class="display mx-auto">
     </table>
 </div>
 <p/>
-<div id="tableModal" class="modal fade" role="dialog">
+<div id="orderModal" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
 <div class="modal-dialog">
 
     <!-- Content-->
     <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title">New Table</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
+<!--        <div class="modal-header">-->
+<!--            <h4 class="modal-title">New Table</h4>-->
+<!--            <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--        </div>-->
 
         <div class="modal-body">
 
-            <form id="tableForm">
+            <form id="orderForm">
                 <div class="form-group">
                     <input type="text" class="d-none form-control" id="id" value="0">
                 </div>
                 <div class="form-group">
-                    <label for="number">Table Number:</label>
-                    <input type="number" class="form-control" id="number">
+                    <input type="text" class="d-none form-control" id="menuId" value="0">
                 </div>
                 <div class="form-group">
-                    <label for="seat">Seat:</label>
-                    <input type="number" class="form-control" id="seat"  name="seat">
+                    <label for="date">Date:</label>
+                    <input type="date" class="form-control" id="date">
                 </div>
                 <div class="form-group">
-                    <label for="mergeable">Mergeable:</label>
-                    <input type="text" class="form-control" id="mergeable">
+                    <label for="time">Time:</label>
+                    <input type="time" class="form-control" id="time">
                 </div>
+                <!--We should reach to customer id inside of the reservation otherwise customer id is undefined-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control d-none" id="menuItemId">-->
+<!--                </div>-->
                 <div class="form-group">
-                    <label for="available">Available:</label>
-                    <input type="text" class="form-control" id="available">
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" class="form-control" autocomplete="off" id="itemName">
                 </div>
-
+<!--                <div class="form-group">-->
+<!--                    <label for="type">Type:</label>-->
+<!--                    <input type="text" class="form-control" autocomplete="off" id="type">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="description">Description:</label>-->
+<!--                    <input type="text" class="form-control" autocomplete="off" id="description">-->
+<!--                </div>-->
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="number" class="form-control" id="price">
+                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="alcoholic">Alcoholic:</label>-->
+<!--                    <input type="text" class="form-control" id="alcoholic">-->
+<!--                </div>-->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button id="closeButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -91,32 +109,32 @@
 
 </div>
 </div>
-
-<div class="roww col-md-112">
-        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="newTableButton">New Table</button>
+<div class="row" id="mainContent">
+    <div class="col-md-12" style="display: flex; justify-content: center;">
+        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="newOrderButton">New Order</button>
         <span style="margin: 0 10px;"></span>
-        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="editTableButton">Edit Table</button>
+        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="editOrderButton">Edit Order</button>
         <span style="margin: 0 10px;"></span>
-        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="deleteTableButton">Delete Table</button>
+        <button type="button" class="btn btn-primary cambria" style="background-color: #fea116;" id="deleteOrderButton">Delete Order</button>
     </div>
 </div>
 
-<div id="tableDeleteModal" class="modal fade" role="dialog">
+<div id="orderDeleteModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
 
         <!-- Content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Delete Table</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete Order</h4>
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
             </div>
 
             <div class="modal-body">
                 Are you sure?
             </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" id="deleteTableConfirmButton" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                <button type="button" class="btn btn-secondary room-close-button" data-dismiss="modal">Cancel</button>
+                <button type="button" id="deleteOrderConfirmButton" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                <button type="button" id="closeButtonCancel" class="btn btn-secondary room-close-button" data-dismiss="modal">Cancel</button>
 
             </div>
 
@@ -125,7 +143,7 @@
     </div>
 </div>
 <br>
-<footer style="height: 85px; background-color: #0f172b; position: static; bottom: 0; left: 0; width: 100%;"></footer>
+<!--<footer style="height: 85px; background-color: #0f172b; position: static; bottom: 0; left: 0; width: 100%;"></footer>-->
 
 
 <!--<div th:insert="/fragments/footer :: footer">-->

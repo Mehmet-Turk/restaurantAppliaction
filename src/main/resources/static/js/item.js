@@ -2,14 +2,14 @@ var api = "http://localhost:8080/api/menu" ;
 var itemTable;
 function init(){
     console.log('inside init' );
-    $("#newTableButton").click( function () {
-        console.log("Inside click of newTableButton");
+    $("#newItemButton").click( function () {
+        console.log("Inside click of newItemButton");
         $("#mainContent").hide();
-        $('#tableModal').modal('show');
+        $('#itemModal').modal('show');
     });
 
-    $("#editTableButton").click( function () {
-        console.log("Inside click of editTableButton");
+    $("#editItemButton").click( function () {
+        console.log("Inside click of editItemButton");
         // Get the data from selected row and fill fields in modal
 
         if (itemTable.row($('.selected')).data() == undefined) {
@@ -24,41 +24,41 @@ function init(){
             $("#price").val(menuItem.price);
             $("#alcoholic").val(menuItem.alcoholic);
             $("#mainContent").hide();
-            $('#tableModal').modal('show');
+            $('#itemModal').modal('show');
         }
 
     });
 
-    $("#deleteTableButton").click(function() {
-        console.log("Inside click of deleteTableButton");
+    $("#deleteItemButton").click(function() {
+        console.log("Inside click of deleteItemButton");
 
         if (itemTable.row($('.selected')).data() == undefined) {
             alert("Select table first");
         } else {
             $("#mainContent").hide();
-            $('#tableDeleteModal').modal('show');
+            $('#itemDeleteModal').modal('show');
         }
     });
 
     $("#closeButton").click(function() {
-        $('#tableModal').modal('hide');
+        $('#itemModal').modal('hide');
 
         // Show the main content
         $("#mainContent").show();
     });
 
     $("#closeButtonCancel").click(function() {
-        $('#tableModal').modal('hide');
+        $('#itemModal').modal('hide');
 
         // Show the main content
         $("#mainContent").show();
     });
 
     // Button in modal
-    $("#deleteTableConfirmButton").click(function() {
-        console.log("Inside click of deleteTableConfirmButton");
-        deleteTable();
-        $('#tableDeleteModal').modal('hide');
+    $("#deleteItemConfirmButton").click(function() {
+        console.log("Inside click of deleteItemConfirmButton");
+        deleteItem();
+        $('#itemDeleteModal').modal('hide');
 
         // Show the main content
         $("#mainContent").show();
@@ -67,15 +67,15 @@ function init(){
 
 
     // Add submit event to form for new and edit
-    $("#tableForm").on('submit', function() {
+    $("#itemForm").on('submit', function() {
         console.log("Submitting");
-        createTable();
-        $('#tableModal').modal('hide');
+        createItem();
+        $('#itemModal').modal('hide');
     });
 
     initItemTable();
     // Get customers from backend and and update table
-    getTableData();
+    getItemData();
 }
 function initItemTable() {
 
@@ -137,9 +137,9 @@ function initItemTable() {
     });
 
 }
-function getTableData(){
+function getItemData(){
 
-    console.log('inside getTableData' );
+    console.log('inside getItemData' );
     // http:/localhost:9090/api/customer
     // json list of customers
     $.ajax({
@@ -165,12 +165,12 @@ function getTableData(){
     });
 
 }
-function createTable(){
+function createItem(){
 
-    console.log('inside createTable' );
+    console.log('inside createItem' );
 
     // Put customer data from page in Javascript object --- SIMILAR TO JSON
-    var tableData = {
+    var itemData = {
             menuItemId: $("#id").val(),
             itemName: $("#name").val(),
             type: $("#type").val(),
@@ -180,21 +180,21 @@ function createTable(){
     }
 
     // Transform Javascript object to json
-    var tableJson = JSON.stringify(tableData);
+    var itemJson = JSON.stringify(itemData);
 
-    console.log(tableJson);
+    console.log(itemJson);
 
     $.ajax({
         url: api,
         type: "post",
-        data: tableJson,    // json for request body
+        data: itemJson,    // json for request body
         contentType:"application/json; charset=utf-8",   // What we send to frontend
         dataType: "json",  // get back from frontend
         // success: function(customer, textStatus, jqXHR){
         success: function(items){
         alert("Item is created");
 
-          console.log(table);
+          console.log(item);
 
           // Clear fields in page
           $("#id").val('');
@@ -205,7 +205,7 @@ function createTable(){
           $("#alcoholic").val('');
 
           // Refresh table data
-          getTableData();
+          getItemData();
 
         },
 
@@ -216,7 +216,7 @@ function createTable(){
     });
 
 }
-function deleteTable(){
+function deleteItem(){
 
     if (itemTable.row($('.selected')).data() == undefined) {
         alert("Select item first");
@@ -236,7 +236,7 @@ function deleteTable(){
                   console.log(message);
 
                   // Refresh table data
-                  getTableData();
+                  getItemData();
 
                 },
 
