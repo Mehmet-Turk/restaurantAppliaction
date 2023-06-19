@@ -102,4 +102,8 @@ public class Controller {
     public String dashboardPage(){
         return "dashboard";
     }
+    @GetMapping("/menuOrder")
+    public String menuOrderPage(){
+        return "menuOrder";
+    }
 }
