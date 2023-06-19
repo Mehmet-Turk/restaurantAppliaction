@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,20 +62,58 @@ public class DemoApplication implements CommandLineRunner {
 		PaymentMethod paymentMethod;
 		paymentMethod = new PaymentMethod("oylesine");
 		paymentMethodRepository.save(paymentMethod);
-		Customer customer;
-//		customer = new Customer(paymentMethod, "Ali", "Veli", "0329392212", "dadafaf", "fasfa", false);
+//		Customer customer;
+
+
+		MenuItem menu1 = new MenuItem("Chicken Menu","Fast-Food","A 100g serving of baked chicken breast contains 4 grams of fat and 31 grams of protein",13.00,false);
+		menuItemRepository.save(menu1);
+		MenuItem menu2 = new MenuItem("Doner","Fast-food","The meat is typically seasoned with fresh herbs and spices.",10.00,false);
+		menuItemRepository.save(menu2);
+		MenuItem menu3 = new MenuItem("Beef Burger", "Fast-Food", "Juicy beef patty with fresh vegetables and cheese", 12.50, false);
+		menuItemRepository.save(menu3);
+		MenuItem menu4 = new MenuItem("Vegetable Pizza", "Italian", "A delicious pizza topped with a variety of fresh vegetables", 15.00, true);
+		menuItemRepository.save(menu4);
+
+		List<MenuItem> order1 = new ArrayList<>();
+		order1.add(menu1);
+		order1.add(menu2);
+		RestaurantOrders restaurantOrder1 = new RestaurantOrders(order1);
+		restaurantOrder1.setDate(LocalDate.now());
+		restaurantOrder1.setTime(LocalTime.now());
+		restaurantOrdersRepository.save(restaurantOrder1);
+
+		List<MenuItem> order2 = new ArrayList<>();
+		order2.add(menu3);
+		order2.add(menu4);
+		RestaurantOrders restaurantOrder2 = new RestaurantOrders(order2);
+		restaurantOrder2.setDate(LocalDate.now());
+		restaurantOrder2.setTime(LocalTime.now());
+		restaurantOrdersRepository.save(restaurantOrder2);
+//		restaurantOrders.save(orders);
+
+
+
+//		restaurantOrders orders = new RestaurantOrders(menu1,menu2);
+//		customer = new Customer("Ali Sen", "123456789", "emrah@gmail.com", 129);
 //		customerRepository.save(customer);
 
 //		MenuItem menuItem1 = new MenuItem("Pasta", "Pasta", "pasta", 12, false);
+//		MenuItem menuItem2 = new MenuItem("Pasta", "Pasta", "pasta", 12, false);
+//		List<MenuItem> orders = new ArrayList<>();
+//		orders.add(menuItem1);
+//		orders.add(menuItem2);
 //		menuItemRepository.save(menuItem1);
 //		MenuItem menuItem2 = new MenuItem("Hamburger", "Hamburger", "Hamburger", 14, false);
 //		menuItemRepository.save(menuItem2);
 //		List<MenuItem> orders = new ArrayList<>();
 //		orders.add(menuItem1);
 //		orders.add(menuItem2);
-//		RestaurantOrders restaurantOrders;
+
 //		restaurantOrders = new RestaurantOrders(customer, orders);
 //		restaurantOrdersRepository.save(restaurantOrders);
+//		restaurantOrdersRepository.save(restaurantOrders);
+
+
 //		RestaurantTables table;
 //		table = new RestaurantTables(100, 3, false, true);
 //		restaurantTablesRepository.save(table);
