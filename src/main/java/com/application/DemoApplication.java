@@ -3,6 +3,7 @@ package com.application;
 import com.application.model.*;
 import com.application.model.MenuItem;
 import com.application.repositories.*;
+//import com.application.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -65,29 +66,21 @@ public class DemoApplication implements CommandLineRunner {
 //		Customer customer;
 
 
-		MenuItem menu1 = new MenuItem("Chicken Menu","Fast-Food","A 100g serving of baked chicken breast contains 4 grams of fat and 31 grams of protein",13.00,false);
-		menuItemRepository.save(menu1);
-		MenuItem menu2 = new MenuItem("Doner","Fast-food","The meat is typically seasoned with fresh herbs and spices.",10.00,false);
-		menuItemRepository.save(menu2);
-		MenuItem menu3 = new MenuItem("Beef Burger", "Fast-Food", "Juicy beef patty with fresh vegetables and cheese", 12.50, false);
-		menuItemRepository.save(menu3);
-		MenuItem menu4 = new MenuItem("Vegetable Pizza", "Italian", "A delicious pizza topped with a variety of fresh vegetables", 15.00, true);
-		menuItemRepository.save(menu4);
+//		MenuItem menu1 = new MenuItem("Chicken Menu","Fast-Food","A 100g serving of baked chicken breast contains 4 grams of fat and 31 grams of protein",13.00,false);
+//		menuItemRepository.save(menu1);
+//		MenuItem menu2 = new MenuItem("Doner","Fast-food","The meat is typically seasoned with fresh herbs and spices.",10.00,false);
+//		menuItemRepository.save(menu2);
+//		MenuItem menu3 = new MenuItem("Beef Burger", "Fast-Food", "Juicy beef patty with fresh vegetables and cheese", 12.50, false);
+//		menuItemRepository.save(menu3);
+//		MenuItem menu4 = new MenuItem("Vegetable Pizza", "Italian", "A delicious pizza topped with a variety of fresh vegetables", 15.00, true);
+//		menuItemRepository.save(menu4);
 
-		List<MenuItem> order1 = new ArrayList<>();
-		order1.add(menu1);
-		order1.add(menu2);
-		RestaurantOrders restaurantOrder1 = new RestaurantOrders(order1);
-		restaurantOrder1.setDate(LocalDate.now());
-		restaurantOrder1.setTime(LocalTime.now());
+
+		RestaurantOrders restaurantOrder1 = new RestaurantOrders("Hamburger", 2, LocalDate.now(), LocalTime.now(),12,  111);
 		restaurantOrdersRepository.save(restaurantOrder1);
 
-		List<MenuItem> order2 = new ArrayList<>();
-		order2.add(menu3);
-		order2.add(menu4);
-		RestaurantOrders restaurantOrder2 = new RestaurantOrders(order2);
-		restaurantOrder2.setDate(LocalDate.now());
-		restaurantOrder2.setTime(LocalTime.now());
+
+		RestaurantOrders restaurantOrder2 = new RestaurantOrders("Pizza", 1, LocalDate.now(), LocalTime.now(),15,  117);
 		restaurantOrdersRepository.save(restaurantOrder2);
 //		restaurantOrders.save(orders);
 

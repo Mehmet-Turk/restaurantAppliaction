@@ -18,12 +18,11 @@ function init() {
         } else {
             var order = orderTable.row($('.selected')).data();
             $("#id").val(order.orderId);
+            $("#itemName").val(order.itemName);
+            $("#quantity").val(order.quantity);
             $("#date").val(order.date);
             $("#time").val(order.time);
-            $("#itemName").val(order.itemName);
-            //            $("#type").val(order.type);
-            //            $("#description").val(order.description);
-            $("#price").val(order.price)
+            $("#tableNumber").val(order.tableNumber);
             $("#mainContent").hide();
             $('#orderModal').modal('show');
         }
@@ -91,18 +90,13 @@ function initOrderTable() {
         },
         {
             "title": "Item Name",
-            "data": "menuItem",
-            "render": function(menuItems) {
-                var itemNames = menuItems.map(function(menuItem) {
-                    return menuItem.itemName;
-                });
-                return itemNames.join("<br>");
-            }
-        },
-        {
-            "title": "Order ID", //@todo
-            "data": "menuItem[].menuItemId",
-            "visible": false
+            "data": "itemName",
+//            "render": function(menuItems) {
+//                var itemNames = menuItems.map(function(menuItem) {
+//                    return menuItem.itemName;
+//                });
+//                return itemNames.join("<br>");
+//            }
         },
         {
             "title": "Date",
@@ -112,26 +106,33 @@ function initOrderTable() {
             "title": "Time",
             "data": "time"
         },
+        {
+             "title": "Quantity",
+             "data": "quantity"
+        },
         //            { "title":  "Item Name",
         //                        "data": "menuItem[,].itemName" },
-        {
-            "title": "price",
-            "data": "menuItem",
-            "render": function(menuItems) {
-                var prices = menuItems.map(function(menuItem) {
-                    return "$" + menuItem.price;
-                });
-                return prices.join("<br>");
-            }
-        },
+//        {
+//            "title": "price",
+//            "data": "menuItem",
+//            "render": function(menuItems) {
+//                var prices = menuItems.map(function(menuItem) {
+//                    return "$" + menuItem.price;
+//                });
+//                return prices.join("<br>");
+//            }
+//        },
         //        { "title":  "Type",
         //             "data": "menuItem[,].type" },
         //        { "title":  "Description",
         //             "data": "menuItem[,].description" },
-        {
-            "title": "Total Price",
-            "data": getTotalPrice
-        }
+//        {
+//            "title": "Total Price",
+//            "data": getTotalPrice
+//        },
+           {         "title": "Table Number",
+                    "data": "tableNumber"
+                }
         //        { "title": "Alcoholic",
         //            "data": "menuItem.alcoholic",
         //            "render": function(alcoholic) {
@@ -218,16 +219,19 @@ function createOrder() {
 
     //     Put customer data from page in Javascript object --- SIMILAR TO JSON
     var orderData = {
-        orderId: $("#id").val(),
+
         date: $("#date").val(),
         time: $("#time").val(),
-        menuItems: [{
-            menuItemId: $("#menuItemId").val(),
-            itemName: $("#itemName").val(),
-//                        type: $("type").val(),
-            //            description: $("description").val(),
-                        price: $("#price").val()
-        }]
+        tableNumber: $("#tableNumber"),
+        quantity: $("#quantity"),
+        itemName: $("#itemName").val(),
+//        menuItems: [{
+//            menuItemId: $("#menuItemId").val(),
+//            itemName: $("#itemName").val(),
+////                        type: $("type").val(),
+//            //            description: $("description").val(),
+//                        price: $("#price").val()
+//        }]
     }
 
     //===================//
@@ -268,8 +272,9 @@ function createOrder() {
             $("#id").val('');
             $("#date").val('');
             $("#time").val('');
-            //          $("#type").val('');
+            $("#tableNumber").val('');
             $("#itemName").val('');
+            $("#quantity").val('');
             $("#price").val('');
 
             // Refresh table data
