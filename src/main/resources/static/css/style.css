@@ -558,3 +558,7 @@
   z-index: -1;
 }
 
+.blur {
+  filter: blur(4px);
+}
+

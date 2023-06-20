@@ -40,10 +40,18 @@
     <!-- Test -->
     <!-- Template Stylesheet -->
     <div th:insert="/fragments/header1 :: header"></div>
+    <script>
+        $( document ).ready(function() {
+            console.log( "initializing" );
+            displayOrders();
+        });
+
+</script>
 
     </head>
 
 <body>
+
 <!-- Login Start -->
 <div class="container-xxl px-0 wow fadeInUp" data-wow-delay="0.1s" id="login">
     <div class="row g-0">

@@ -19,14 +19,13 @@ import java.util.Optional;
 public class RestaurantOrderController {
     @Autowired
     RestaurantOrdersService restaurantOrdersService;
-    @Autowired
-    MenuItemService menuItemService;
+
 
     // Endpoint
     // http://localhost:8080/api/orders
     // POST
     @PostMapping(value = "/orders", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<RestaurantOrders> createReservation(@RequestBody RestaurantOrders restaurantOrders) {
+    public ResponseEntity<RestaurantOrders> createOrder(@RequestBody RestaurantOrders order) {
 //        List<MenuItem> menus = restaurantOrders.getMenuItem();
 //
 //        for (MenuItem menu : menus) {
@@ -36,7 +35,7 @@ public class RestaurantOrderController {
 //            menu.setPrice(price);
 //
 //        }
-        return ResponseEntity.ok().body(restaurantOrdersService.save(restaurantOrders));
+        return ResponseEntity.ok().body(restaurantOrdersService.save(order));
 
     }
     // Endpoint
@@ -65,9 +64,16 @@ public class RestaurantOrderController {
     // http://localhost:8080/api/orders/2
     // DEL
     @DeleteMapping("orders/{id}")
-    public ResponseEntity<Void> deleteReservationById(@PathVariable long id) {
+    public ResponseEntity<Void> deleteOrderById(@PathVariable long id) {
 
         restaurantOrdersService.deleteById(id);
         return ResponseEntity.ok().build();
     }
+    @PostMapping(value = "/orders/filter", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<List<RestaurantOrders>> getTableOrders(@RequestBody RestaurantOrders orders) {
+        List<RestaurantOrders> tableOrders = restaurantOrdersService.getTableOrders(orders);
+        return ResponseEntity.ok(tableOrders) ;
+    }
+
+
 }
