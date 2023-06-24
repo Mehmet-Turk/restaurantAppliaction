@@ -91,6 +91,7 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard", true)
+                .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
                 .logout()

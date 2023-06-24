@@ -56,7 +56,7 @@
             <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-start text-primary fw-normal">*Login</h5>
                 <h1 class="text-white mb-4 cambria">Welcome !</h1>
-                <p th:if="${loginError}" class="error">Wrong user or password</p>
+                <p th:if="${loginError}" class="error danger">Wrong user name or password</p>
                 <form th:action="@{/login}" method="post">
                     <div class="row g-3">
                         <div class="col-12">

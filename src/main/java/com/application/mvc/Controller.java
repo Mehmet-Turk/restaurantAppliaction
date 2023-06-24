@@ -1,6 +1,9 @@
 package com.application.mvc;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 @org.springframework.stereotype.Controller
 public class Controller {
     // http://localhost:8080/
@@ -57,7 +60,10 @@ public class Controller {
         return "about";
     }
     @GetMapping("/login")
-    public String loginPage(){
+    public String showLoginPage(@RequestParam(value = "error", required = false) String error, Model model) {
+        if (error != null) {
+            model.addAttribute("loginError", "Invalid username or password");
+        }
         return "login";
     }
     @GetMapping("/table")
