@@ -19,18 +19,15 @@ import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
-	@Autowired
-	ReservationRepository reservationRepository;
+
 	@Autowired
 	PaymentMethodRepository paymentMethodRepository;
-	@Autowired
-	CustomerRepository customerRepository;
+
 	@Autowired
 	RestaurantTablesRepository restaurantTablesRepository;
 	@Autowired
 	MenuItemRepository menuItemRepository;
-	@Autowired
-	RestaurantOrdersRepository restaurantOrdersRepository;
+
 	@Autowired
 	StockRepository stockRepository;
 	List<RestaurantTables> loadedTables = new ArrayList<>();
@@ -76,12 +73,12 @@ public class DemoApplication implements CommandLineRunner {
 //		menuItemRepository.save(menu4);
 
 
-		RestaurantOrders restaurantOrder1 = new RestaurantOrders("Hamburger", 2, LocalDate.now(), LocalTime.now(),12,  111);
-		restaurantOrdersRepository.save(restaurantOrder1);
-
-
-		RestaurantOrders restaurantOrder2 = new RestaurantOrders("Pizza", 1, LocalDate.now(), LocalTime.now(),15,  117);
-		restaurantOrdersRepository.save(restaurantOrder2);
+//		RestaurantOrders restaurantOrder1 = new RestaurantOrders("Hamburger", 2, LocalDate.now(), LocalTime.now(),12,  111);
+//		restaurantOrdersRepository.save(restaurantOrder1);
+//
+//
+//		RestaurantOrders restaurantOrder2 = new RestaurantOrders("Pizza", 1, LocalDate.now(), LocalTime.now(),15,  117);
+//		restaurantOrdersRepository.save(restaurantOrder2);
 //		restaurantOrders.save(orders);
 
 

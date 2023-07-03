@@ -204,5 +204,48 @@ document.getElementById('select').addEventListener('change', function() {
   }
 });
 
+$(function ($) {
+  "use strict";
+
+  // ...
+
+  // Login form
+  $("form").submit(function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get the entered email and password values
+    var email = $("#username").val();
+    var password = $("#password").val();
+
+    // Perform your validation logic here
+    var isValid = validateLogin(email, password);
+
+    // Show error message if validation fails
+    if (!isValid) {
+      $(".error").text("Wrong email or password").show();
+      return;
+    }
+
+    // Proceed with form submission if validation passes
+    this.submit();
+  });
+
+  // ...
+
+})(jQuery);
+
+// Function to validate login credentials
+function validateLogin(email, password) {
+  // Implement your validation logic here
+  // Return true if the credentials are valid, false otherwise
+  // For example:
+  if (email === "example@example.com" && password === "password") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+
 
 

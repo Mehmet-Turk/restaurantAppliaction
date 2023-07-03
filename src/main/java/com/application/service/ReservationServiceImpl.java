@@ -37,29 +37,26 @@ public class ReservationServiceImpl implements ReservationService {
             }
         });
 
-        for (RestaurantTables table: tables) {
-            System.out.println(table.getSeat());
-
-        }
         List <RestaurantTables> reservedTables = new ArrayList<>();
         int numberOfPeople = reservation.getNumberOfPeople();
         int count = 0;
         int i = 0;
-        while (numberOfPeople>= tables.get(i).getSeat()){
-            reservedTables.add(tables.get(i));
-            numberOfPeople -= tables.get(i).getSeat();
-            tables.remove(i);
-            i++;
-            if(i> tables.size()){
-                break;
-            }
-        }
-        Collections.sort(tables, new Comparator<RestaurantTables>() {
-            @Override
-            public int compare(RestaurantTables table1, RestaurantTables table2) {
-                return table1.getSeat() - table2.getSeat();
-            }
-        });
+//        while (numberOfPeople>= tables.get(i).getSeat()){
+//            reservedTables.add(tables.get(i));
+//            numberOfPeople -= tables.get(i).getSeat();
+//            tables.remove(i);
+//            i++;
+//            if(i> tables.size()){
+//                break;
+//            }
+//        }
+//        Collections.sort(tables, new Comparator<RestaurantTables>() {
+//            @Override
+//            public int compare(RestaurantTables table1, RestaurantTables table2) {
+//                return table1.getSeat() - table2.getSeat();
+//            }
+//        });
+//
 
         for (RestaurantTables table:tables ) {
 

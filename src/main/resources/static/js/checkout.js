@@ -28,12 +28,12 @@ function showMessage() {
   notification.style.top = topPosition;
   notification.style.left = leftPosition;
 
-  // setTimeout(function() {
-  //   notification.classList.remove('show');
-  //   setTimeout(function() {
-  //     notification.remove();
-  //   }, 10000);
-  // }, 20000);
+   setTimeout(function() {
+     notification.classList.remove('show');
+     setTimeout(function() {
+       notification.remove();
+     }, 1000);
+   }, 2000);
 }
 
 
@@ -50,12 +50,12 @@ function showMessage1() {
   }, 100);
   notification.style.top = 'calc(50% + 9px)';
   notification.style.left = 'calc(30% - 10px)';
-//  setTimeout(function() {
-//    notification.classList.remove('show');
-//    setTimeout(function() {
-//      notification.remove();
-//    }, 10000);
-//  }, 20000);
+  setTimeout(function() {
+    notification.classList.remove('show');
+    setTimeout(function() {
+      notification.remove();
+    }, 1000);
+  }, 2000);
 }
 
 
@@ -71,12 +71,12 @@ function showMessage2() {
   }, 100);
   notification.style.top = 'calc(50% + 9px)';
   notification.style.left = 'calc(30% - 10px)';
-//  setTimeout(function() {
-//    notification.classList.remove('show');
-//    setTimeout(function() {
-//      notification.remove();
-//    }, 10000);
-//  }, 20000);
+  setTimeout(function() {
+    notification.classList.remove('show');
+    setTimeout(function() {
+      notification.remove();
+    }, 1000);
+  }, 2000);
 }
 
 function displayOrders() {
@@ -112,7 +112,7 @@ function displayOrders() {
 
       // Generate the table with order information
       content += "<table>";
-      content += "<thead><tr><th>Item Name</th><th>Quantity</th><th>Item Price</th></tr></thead>";
+      content += "<thead><tr><th>Orders</th><th>Qty</th><th>Price</th></tr></thead>";
       content += "<tbody>";
 
       var totalPrice = 0;
@@ -137,7 +137,7 @@ function displayOrders() {
       content += "</tbody></table>";
 
       // Display the total price
-      content += "<p>Total Price: " + totalPrice + "</p>";
+      content += "<p>Total Price: " + totalPrice + "$" + "</p>";
 
       // Close button
       content += "<button onclick='window.close()'>Close</button>";

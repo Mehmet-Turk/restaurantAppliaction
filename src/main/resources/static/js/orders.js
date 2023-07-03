@@ -219,36 +219,14 @@ function createOrder() {
 
     //     Put customer data from page in Javascript object --- SIMILAR TO JSON
     var orderData = {
-
+        orderId: $("#id").val(),
         date: $("#date").val(),
         time: $("#time").val(),
-        tableNumber: $("#tableNumber"),
-        quantity: $("#quantity"),
-        itemName: $("#itemName").val(),
-//        menuItems: [{
-//            menuItemId: $("#menuItemId").val(),
-//            itemName: $("#itemName").val(),
-////                        type: $("type").val(),
-//            //            description: $("description").val(),
-//                        price: $("#price").val()
-//        }]
-    }
+        tableNumber: $("#tableNumber").val(),
+        quantity: $("#quantity").val(),
+        itemName: $("#itemName").val()
+        }
 
-    //===================//
-    //    var orderData = {
-    //        orderId: $("#id").val(),
-    //        date: $("#date").val(),
-    //        time: $("#time").val(),
-    //        menuItem: [
-    //            {
-    //                menuItemId: $("#menuItemId").val(),
-    //                itemName: $("#itemName").val(),
-    //                price: $("#price").val()
-    //            }
-    //        ]
-    //    };
-
-    //=====================//
 
 
 

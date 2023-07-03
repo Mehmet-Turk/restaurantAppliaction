@@ -28,7 +28,8 @@ function init(){
         console.log("Inside submit of newReservationButton");
 
         createReservation();
-        window.location.href = "/reservationDetails";
+        setTimeout(()=>{window.location.href = "/reservationDetails";},500)
+
         event.preventDefault();
 
     });
@@ -98,8 +99,8 @@ function createReservation(){
 
 
 
-        console.log(res);
-//        displayReservationDetails(reservation);
+        console.log(JSON.stringify(res));
+      displayReservationDetails();
 
         //window.location.href = "/reservationDetails";
 //          res = reservation;

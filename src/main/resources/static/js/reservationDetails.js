@@ -15,7 +15,7 @@ function displayReservationDetails() {
         `;
 
         const tableInfo = document.createElement('div');
-        tableInfo.innerHTML = '<h3>Table Details</h3>';
+        tableInfo.innerHTML = '<h3>Table Number</h3>';
 reservation.table.forEach((table, index) => {
     const tableElement = document.createElement('span');
     tableElement.innerHTML = table.tableNumber;

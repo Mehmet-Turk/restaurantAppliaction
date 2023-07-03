@@ -5,6 +5,11 @@
     --dark: #0F172B;
 }
 
+.error {
+   color: red;
+   font-weight: bold;
+ }
+
 .ff-secondary {
     font-family: 'Pacifico', cursive;
 }
